@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>ChessPuzzlesLibrary.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>Test Bundle.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>gtest.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>standalone.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>B2D94344187A7054002BBCB8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B2D943C2187BAEE9002BBCB8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B2D943CC187BAF98002BBCB8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B2D943DD187BB32B002BBCB8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B2D943EF187BB355002BBCB8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B2D943FC187BB3B5002BBCB8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B2FBB983187A5CD100382BAC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

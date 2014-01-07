@@ -1,0 +1,687 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B2D943C7187BAF0B002BBCB8 /* ChessBoard.c in Sources */ = {isa = PBXBuildFile; fileRef = B2FBB990187A5F7100382BAC /* ChessBoard.c */; };
+		B2D943C8187BAF24002BBCB8 /* ChessBoard.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FBB992187A5F7A00382BAC /* ChessBoard.h */; };
+		B2D943D8187BB106002BBCB8 /* gtest-all.cc in Sources */ = {isa = PBXBuildFile; fileRef = B2D943D7187BB106002BBCB8 /* gtest-all.cc */; };
+		B2D943F3187BB355002BBCB8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2D943F2187BB355002BBCB8 /* main.cpp */; };
+		B2D943F5187BB355002BBCB8 /* standalone.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2D943F4187BB355002BBCB8 /* standalone.1 */; };
+		B2D94405187BB3B5002BBCB8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B2D94403187BB3B5002BBCB8 /* InfoPlist.strings */; };
+		B2D94407187BB3B5002BBCB8 /* ChessPuzzlesLibrary_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D94406187BB3B5002BBCB8 /* ChessPuzzlesLibrary_Tests.m */; };
+		B2D9440E187BB455002BBCB8 /* libChessPuzzlesLibrary.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D943C3187BAEE9002BBCB8 /* libChessPuzzlesLibrary.dylib */; };
+		B2D9440F187BB455002BBCB8 /* libgtest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D943CD187BAF98002BBCB8 /* libgtest.a */; };
+		B2D94411187BB6D5002BBCB8 /* GoogleTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2D94410187BB6D5002BBCB8 /* GoogleTests.mm */; };
+		B2D94414187BB6FF002BBCB8 /* GoogleTestStub.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D94413187BB6FF002BBCB8 /* GoogleTestStub.m */; };
+		B2D94416187BB76F002BBCB8 /* ChessBoardTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2D9433F187A6EE1002BBCB8 /* ChessBoardTest.cpp */; };
+		B2D9441D187BBEFC002BBCB8 /* ChessBoardTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2D9433F187A6EE1002BBCB8 /* ChessBoardTest.cpp */; };
+		B2D9441E187BBF16002BBCB8 /* libChessPuzzlesLibrary.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D943C3187BAEE9002BBCB8 /* libChessPuzzlesLibrary.dylib */; };
+		B2D9441F187BBF16002BBCB8 /* libgtest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D943CD187BAF98002BBCB8 /* libgtest.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B2D94409187BB3B5002BBCB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2FBB97C187A5CD100382BAC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B2D943C2187BAEE9002BBCB8;
+			remoteInfo = ChessPuzzlesLibrary;
+		};
+		B2D94417187BBB54002BBCB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2FBB97C187A5CD100382BAC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B2D943CC187BAF98002BBCB8;
+			remoteInfo = gtest;
+		};
+		B2D94419187BBEEE002BBCB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2FBB97C187A5CD100382BAC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B2D943C2187BAEE9002BBCB8;
+			remoteInfo = ChessPuzzlesLibrary;
+		};
+		B2D9441B187BBEEE002BBCB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2FBB97C187A5CD100382BAC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B2D943CC187BAF98002BBCB8;
+			remoteInfo = gtest;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B2D943EE187BB355002BBCB8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				B2D943F5187BB355002BBCB8 /* standalone.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B2D942E7187A67D7002BBCB8 /* board.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = board.jpg; sourceTree = SOURCE_ROOT; };
+		B2D9433F187A6EE1002BBCB8 /* ChessBoardTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChessBoardTest.cpp; sourceTree = "<group>"; };
+		B2D943C3187BAEE9002BBCB8 /* libChessPuzzlesLibrary.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libChessPuzzlesLibrary.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2D943CD187BAF98002BBCB8 /* libgtest.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libgtest.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2D943D7187BB106002BBCB8 /* gtest-all.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "gtest-all.cc"; path = "../Dependencies/gtest/src/gtest-all.cc"; sourceTree = "<group>"; };
+		B2D943E0187BB32B002BBCB8 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		B2D943F0187BB355002BBCB8 /* standalone */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = standalone; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2D943F2187BB355002BBCB8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		B2D943F4187BB355002BBCB8 /* standalone.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = standalone.1; sourceTree = "<group>"; };
+		B2D943FD187BB3B5002BBCB8 /* ChessPuzzlesLibrary Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ChessPuzzlesLibrary Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2D943FE187BB3B5002BBCB8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		B2D94402187BB3B5002BBCB8 /* ChessPuzzlesLibrary Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ChessPuzzlesLibrary Tests-Info.plist"; sourceTree = "<group>"; };
+		B2D94404187BB3B5002BBCB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B2D94406187BB3B5002BBCB8 /* ChessPuzzlesLibrary_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChessPuzzlesLibrary_Tests.m; sourceTree = "<group>"; };
+		B2D94408187BB3B5002BBCB8 /* ChessPuzzlesLibrary Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChessPuzzlesLibrary Tests-Prefix.pch"; sourceTree = "<group>"; };
+		B2D94410187BB6D5002BBCB8 /* GoogleTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GoogleTests.mm; sourceTree = "<group>"; };
+		B2D94412187BB6FF002BBCB8 /* GoogleTestStub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleTestStub.h; sourceTree = "<group>"; };
+		B2D94413187BB6FF002BBCB8 /* GoogleTestStub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleTestStub.m; sourceTree = "<group>"; };
+		B2FBB990187A5F7100382BAC /* ChessBoard.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ChessBoard.c; sourceTree = "<group>"; };
+		B2FBB992187A5F7A00382BAC /* ChessBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChessBoard.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B2D943C0187BAEE9002BBCB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2D943CA187BAF98002BBCB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2D943ED187BB355002BBCB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2D9441E187BBF16002BBCB8 /* libChessPuzzlesLibrary.dylib in Frameworks */,
+				B2D9441F187BBF16002BBCB8 /* libgtest.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2D943FA187BB3B5002BBCB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2D9440E187BB455002BBCB8 /* libChessPuzzlesLibrary.dylib in Frameworks */,
+				B2D9440F187BB455002BBCB8 /* libgtest.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B2D943D9187BB2B9002BBCB8 /* Google Test */ = {
+			isa = PBXGroup;
+			children = (
+				B2D943D7187BB106002BBCB8 /* gtest-all.cc */,
+			);
+			name = "Google Test";
+			sourceTree = "<group>";
+		};
+		B2D943DF187BB32B002BBCB8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B2D943E0187BB32B002BBCB8 /* CoreFoundation.framework */,
+				B2D943FE187BB3B5002BBCB8 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B2D943F1187BB355002BBCB8 /* standalone */ = {
+			isa = PBXGroup;
+			children = (
+				B2D943F2187BB355002BBCB8 /* main.cpp */,
+				B2D943F4187BB355002BBCB8 /* standalone.1 */,
+			);
+			path = standalone;
+			sourceTree = "<group>";
+		};
+		B2D94400187BB3B5002BBCB8 /* ChessPuzzlesLibrary Tests */ = {
+			isa = PBXGroup;
+			children = (
+				B2D94415187BB722002BBCB8 /* Google Test Support */,
+				B2D94406187BB3B5002BBCB8 /* ChessPuzzlesLibrary_Tests.m */,
+				B2D94401187BB3B5002BBCB8 /* Supporting Files */,
+			);
+			path = "ChessPuzzlesLibrary Tests";
+			sourceTree = "<group>";
+		};
+		B2D94401187BB3B5002BBCB8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B2D94402187BB3B5002BBCB8 /* ChessPuzzlesLibrary Tests-Info.plist */,
+				B2D94403187BB3B5002BBCB8 /* InfoPlist.strings */,
+				B2D94408187BB3B5002BBCB8 /* ChessPuzzlesLibrary Tests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B2D94415187BB722002BBCB8 /* Google Test Support */ = {
+			isa = PBXGroup;
+			children = (
+				B2D94412187BB6FF002BBCB8 /* GoogleTestStub.h */,
+				B2D94413187BB6FF002BBCB8 /* GoogleTestStub.m */,
+				B2D94410187BB6D5002BBCB8 /* GoogleTests.mm */,
+			);
+			name = "Google Test Support";
+			sourceTree = "<group>";
+		};
+		B2FBB97B187A5CD100382BAC = {
+			isa = PBXGroup;
+			children = (
+				B2FBB986187A5CD100382BAC /* ChessPuzzlesLibrary */,
+				B2D943D9187BB2B9002BBCB8 /* Google Test */,
+				B2D943F1187BB355002BBCB8 /* standalone */,
+				B2D94400187BB3B5002BBCB8 /* ChessPuzzlesLibrary Tests */,
+				B2D943DF187BB32B002BBCB8 /* Frameworks */,
+				B2FBB985187A5CD100382BAC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B2FBB985187A5CD100382BAC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B2D943C3187BAEE9002BBCB8 /* libChessPuzzlesLibrary.dylib */,
+				B2D943CD187BAF98002BBCB8 /* libgtest.a */,
+				B2D943F0187BB355002BBCB8 /* standalone */,
+				B2D943FD187BB3B5002BBCB8 /* ChessPuzzlesLibrary Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B2FBB986187A5CD100382BAC /* ChessPuzzlesLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				B2D942E7187A67D7002BBCB8 /* board.jpg */,
+				B2FBB992187A5F7A00382BAC /* ChessBoard.h */,
+				B2FBB990187A5F7100382BAC /* ChessBoard.c */,
+				B2D9433F187A6EE1002BBCB8 /* ChessBoardTest.cpp */,
+			);
+			path = ChessPuzzlesLibrary;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B2D943C1187BAEE9002BBCB8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2D943C8187BAF24002BBCB8 /* ChessBoard.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2D943CB187BAF98002BBCB8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B2D943C2187BAEE9002BBCB8 /* ChessPuzzlesLibrary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2D943C4187BAEE9002BBCB8 /* Build configuration list for PBXNativeTarget "ChessPuzzlesLibrary" */;
+			buildPhases = (
+				B2D943BF187BAEE9002BBCB8 /* Sources */,
+				B2D943C0187BAEE9002BBCB8 /* Frameworks */,
+				B2D943C1187BAEE9002BBCB8 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChessPuzzlesLibrary;
+			productName = ChessPuzzlesLibrary;
+			productReference = B2D943C3187BAEE9002BBCB8 /* libChessPuzzlesLibrary.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		B2D943CC187BAF98002BBCB8 /* gtest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2D943CE187BAF98002BBCB8 /* Build configuration list for PBXNativeTarget "gtest" */;
+			buildPhases = (
+				B2D943C9187BAF98002BBCB8 /* Sources */,
+				B2D943CA187BAF98002BBCB8 /* Frameworks */,
+				B2D943CB187BAF98002BBCB8 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = gtest;
+			productName = gtest;
+			productReference = B2D943CD187BAF98002BBCB8 /* libgtest.a */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		B2D943EF187BB355002BBCB8 /* standalone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2D943F6187BB355002BBCB8 /* Build configuration list for PBXNativeTarget "standalone" */;
+			buildPhases = (
+				B2D943EC187BB355002BBCB8 /* Sources */,
+				B2D943ED187BB355002BBCB8 /* Frameworks */,
+				B2D943EE187BB355002BBCB8 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B2D9441A187BBEEE002BBCB8 /* PBXTargetDependency */,
+				B2D9441C187BBEEE002BBCB8 /* PBXTargetDependency */,
+			);
+			name = standalone;
+			productName = standalone;
+			productReference = B2D943F0187BB355002BBCB8 /* standalone */;
+			productType = "com.apple.product-type.tool";
+		};
+		B2D943FC187BB3B5002BBCB8 /* ChessPuzzlesLibrary Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2D9440B187BB3B5002BBCB8 /* Build configuration list for PBXNativeTarget "ChessPuzzlesLibrary Tests" */;
+			buildPhases = (
+				B2D943F9187BB3B5002BBCB8 /* Sources */,
+				B2D943FA187BB3B5002BBCB8 /* Frameworks */,
+				B2D943FB187BB3B5002BBCB8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B2D94418187BBB54002BBCB8 /* PBXTargetDependency */,
+				B2D9440A187BB3B5002BBCB8 /* PBXTargetDependency */,
+			);
+			name = "ChessPuzzlesLibrary Tests";
+			productName = "ChessPuzzlesLibrary Tests";
+			productReference = B2D943FD187BB3B5002BBCB8 /* ChessPuzzlesLibrary Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B2FBB97C187A5CD100382BAC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Blake Caldwell";
+				TargetAttributes = {
+					B2D943FC187BB3B5002BBCB8 = {
+						TestTargetID = B2D943C2187BAEE9002BBCB8;
+					};
+				};
+			};
+			buildConfigurationList = B2FBB97F187A5CD100382BAC /* Build configuration list for PBXProject "ChessPuzzlesLibrary" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B2FBB97B187A5CD100382BAC;
+			productRefGroup = B2FBB985187A5CD100382BAC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B2D943C2187BAEE9002BBCB8 /* ChessPuzzlesLibrary */,
+				B2D943CC187BAF98002BBCB8 /* gtest */,
+				B2D943EF187BB355002BBCB8 /* standalone */,
+				B2D943FC187BB3B5002BBCB8 /* ChessPuzzlesLibrary Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B2D943FB187BB3B5002BBCB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2D94405187BB3B5002BBCB8 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B2D943BF187BAEE9002BBCB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2D943C7187BAF0B002BBCB8 /* ChessBoard.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2D943C9187BAF98002BBCB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2D943D8187BB106002BBCB8 /* gtest-all.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2D943EC187BB355002BBCB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2D9441D187BBEFC002BBCB8 /* ChessBoardTest.cpp in Sources */,
+				B2D943F3187BB355002BBCB8 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2D943F9187BB3B5002BBCB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2D94411187BB6D5002BBCB8 /* GoogleTests.mm in Sources */,
+				B2D94407187BB3B5002BBCB8 /* ChessPuzzlesLibrary_Tests.m in Sources */,
+				B2D94414187BB6FF002BBCB8 /* GoogleTestStub.m in Sources */,
+				B2D94416187BB76F002BBCB8 /* ChessBoardTest.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B2D9440A187BB3B5002BBCB8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B2D943C2187BAEE9002BBCB8 /* ChessPuzzlesLibrary */;
+			targetProxy = B2D94409187BB3B5002BBCB8 /* PBXContainerItemProxy */;
+		};
+		B2D94418187BBB54002BBCB8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B2D943CC187BAF98002BBCB8 /* gtest */;
+			targetProxy = B2D94417187BBB54002BBCB8 /* PBXContainerItemProxy */;
+		};
+		B2D9441A187BBEEE002BBCB8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B2D943C2187BAEE9002BBCB8 /* ChessPuzzlesLibrary */;
+			targetProxy = B2D94419187BBEEE002BBCB8 /* PBXContainerItemProxy */;
+		};
+		B2D9441C187BBEEE002BBCB8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B2D943CC187BAF98002BBCB8 /* gtest */;
+			targetProxy = B2D9441B187BBEEE002BBCB8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B2D94403187BB3B5002BBCB8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B2D94404187BB3B5002BBCB8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B2D943C5187BAEE9002BBCB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B2D943C6187BAEE9002BBCB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B2D943CF187BAF98002BBCB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				EXECUTABLE_EXTENSION = a;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = (
+					../Dependencies/gtest,
+					"$(inherited)",
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SEPARATE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		B2D943D0187BAF98002BBCB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				EXECUTABLE_EXTENSION = a;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					../Dependencies/gtest,
+					"$(inherited)",
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SEPARATE_STRIP = NO;
+			};
+			name = Release;
+		};
+		B2D943F7187BB355002BBCB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B2D943F8187BB355002BBCB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B2D9440C187BB3B5002BBCB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ChessPuzzlesLibrary Tests/ChessPuzzlesLibrary Tests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					../Dependencies/gtest/include,
+				);
+				INFOPLIST_FILE = "ChessPuzzlesLibrary Tests/ChessPuzzlesLibrary Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		B2D9440D187BB3B5002BBCB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ChessPuzzlesLibrary Tests/ChessPuzzlesLibrary Tests-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					../Dependencies/gtest/include,
+				);
+				INFOPLIST_FILE = "ChessPuzzlesLibrary Tests/ChessPuzzlesLibrary Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		B2FBB98B187A5CD100382BAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					../Dependencies/gtest/include,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		B2FBB98C187A5CD100382BAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					../Dependencies/gtest/include,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B2D943C4187BAEE9002BBCB8 /* Build configuration list for PBXNativeTarget "ChessPuzzlesLibrary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2D943C5187BAEE9002BBCB8 /* Debug */,
+				B2D943C6187BAEE9002BBCB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2D943CE187BAF98002BBCB8 /* Build configuration list for PBXNativeTarget "gtest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2D943CF187BAF98002BBCB8 /* Debug */,
+				B2D943D0187BAF98002BBCB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2D943F6187BB355002BBCB8 /* Build configuration list for PBXNativeTarget "standalone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2D943F7187BB355002BBCB8 /* Debug */,
+				B2D943F8187BB355002BBCB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2D9440B187BB3B5002BBCB8 /* Build configuration list for PBXNativeTarget "ChessPuzzlesLibrary Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2D9440C187BB3B5002BBCB8 /* Debug */,
+				B2D9440D187BB3B5002BBCB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2FBB97F187A5CD100382BAC /* Build configuration list for PBXProject "ChessPuzzlesLibrary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2FBB98B187A5CD100382BAC /* Debug */,
+				B2FBB98C187A5CD100382BAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B2FBB97C187A5CD100382BAC /* Project object */;
+}
