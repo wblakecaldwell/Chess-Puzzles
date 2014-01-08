@@ -22,12 +22,24 @@ struct ChessBoard
     // b = bishop
     // q = queen
     // k = king
-    char *pieces[9];
+    // layout is A1->H1, A2->H2, ... A8->H8
+    char pieces[65];
 };
 
 /*
  *  Initialize the input board for a new game.
  */
 int initializeForGame(struct ChessBoard *board);
+
+/*
+ * Get the piece at the input rank and file, where rank is uppercased A-H, file is 1-8.
+ * Return 0 on failure.
+ */
+char pieceAt(struct ChessBoard *board, char rank, int file);
+
+/*
+ * Move a piece to a new location, returning 1 if a piece was moved, 0 if no piece was moved.
+ */
+int movePiece(struct ChessBoard *board, char rankFrom, int fileFrom, char rankTo, int fileTo);
 
 #endif
