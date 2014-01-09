@@ -15,6 +15,30 @@ extern "C" {
 #include "ChessBoard.h"
 }
 
+/*
+ * (PRIVATE) Helper to initialize char validLocations[65] to all 0's.
+ */
+int helperEmptyValidLocations(char validLocations[65])
+{
+    int i;
+    
+    for(i = 0; i <= 65; i++)
+    {
+        validLocations[i] = 0;
+    }
+    return 1;
+}
+
+/*
+ * (PRIVATE) Helper to add a valid location on the input char validLocations[65].
+ */
+int helperAddValidLocation(char validLocations[65], enum ChessBoardRank rank, enum ChessBoardFile file)
+{
+    validLocations[((rank-1) * 8) + file - 1] = 1;
+    return 1;
+}
+
+
 // test the board initialization
 TEST(ChessBoard_initializeForGame, boardPiecesString)
 {
@@ -25,83 +49,73 @@ TEST(ChessBoard_initializeForGame, boardPiecesString)
 }
 
 // Test pieceAt for every piece in an initialized board
-TEST(ChessBoard_pieceAt, badInput)
-{
-    struct ChessBoard board;
-    initializeForGame(&board);
-    
-    ASSERT_EQ(0, pieceAt(&board, 'a', 1)) << "Lowercase rank didn't return failure as expected";
-    ASSERT_EQ(0, pieceAt(&board, '&', 1)) << "Non-alpha rank didn't return failure as expected";
-    ASSERT_EQ(0, pieceAt(&board, 'I', 1)) << "Rank > 'H' didn't return failure as expected";
-    ASSERT_EQ(0, pieceAt(&board, 'A', 0)) << "File less than 1 didn't return failure as expected";
-    ASSERT_EQ(0, pieceAt(&board, 'a', 9)) << "File > 8 didn't return failure as expected";
-}
-
-// Test pieceAt for every piece in an initialized board
 TEST(ChessBoard_pieceAt, goodInput)
 {
     struct ChessBoard board;
+    enum ChessBoardRank rank;
+    enum ChessBoardFile file;
+    
     initializeForGame(&board);
     
     // check the empty cells
-    for(char rank = 'A'; rank <= 'H'; rank++)
+    for(rank = R3; rank <= R6; rank++)
     {
-        for(int file = 3; file <= 6; file++)
+        for(file = A; file <= H; file++)
         {
             ASSERT_EQ(' ', pieceAt(&board, rank, file)) << rank << file << " not empty";
         }
     }
     
     // check the pawns
-    for(char rank = 'A'; rank <= 'H'; rank++)
+    for(file = A; file <= H; file++)
     {
         // white
-        ASSERT_EQ('P', pieceAt(&board, rank, 2)) << rank << 2 << " not a white pawn";
+        ASSERT_EQ('P', pieceAt(&board, R2, file)) << rank << 2 << " not a white pawn";
         
         // black
-        ASSERT_EQ('p', pieceAt(&board, rank, 7)) << rank << 7 << " not a black pawn";
+        ASSERT_EQ('p', pieceAt(&board, R7, file)) << rank << 7 << " not a black pawn";
     }
     
     // white pieces
-    ASSERT_EQ('R', pieceAt(&board, 'A', 1)) << "White rook not at A1";
-    ASSERT_EQ('N', pieceAt(&board, 'B', 1)) << "White knight not at B1";
-    ASSERT_EQ('B', pieceAt(&board, 'C', 1)) << "White bishop not at C1";
-    ASSERT_EQ('Q', pieceAt(&board, 'D', 1)) << "White queen not at D1";
-    ASSERT_EQ('K', pieceAt(&board, 'E', 1)) << "White king not at E1";
-    ASSERT_EQ('B', pieceAt(&board, 'F', 1)) << "White bishop not at F1";
-    ASSERT_EQ('N', pieceAt(&board, 'G', 1)) << "White knight not at G1";
-    ASSERT_EQ('R', pieceAt(&board, 'H', 1)) << "White rook not at H1";
+    ASSERT_EQ('R', pieceAt(&board, R1, A)) << "White rook not at A1";
+    ASSERT_EQ('N', pieceAt(&board, R1, B)) << "White knight not at B1";
+    ASSERT_EQ('B', pieceAt(&board, R1, C)) << "White bishop not at C1";
+    ASSERT_EQ('Q', pieceAt(&board, R1, D)) << "White queen not at D1";
+    ASSERT_EQ('K', pieceAt(&board, R1, E)) << "White king not at E1";
+    ASSERT_EQ('B', pieceAt(&board, R1, F)) << "White bishop not at F1";
+    ASSERT_EQ('N', pieceAt(&board, R1, G)) << "White knight not at G1";
+    ASSERT_EQ('R', pieceAt(&board, R1, H)) << "White rook not at H1";
     
     // black pieces
-    ASSERT_EQ('r', pieceAt(&board, 'A', 8)) << "Black rook not at A8";
-    ASSERT_EQ('n', pieceAt(&board, 'B', 8)) << "Black knight not at B8";
-    ASSERT_EQ('b', pieceAt(&board, 'C', 8)) << "Black bishop not at C8";
-    ASSERT_EQ('q', pieceAt(&board, 'D', 8)) << "Black queen not at D8";
-    ASSERT_EQ('k', pieceAt(&board, 'E', 8)) << "Black king not at E8";
-    ASSERT_EQ('b', pieceAt(&board, 'F', 8)) << "Black bishop not at F8";
-    ASSERT_EQ('n', pieceAt(&board, 'G', 8)) << "Black knight not at G8";
-    ASSERT_EQ('r', pieceAt(&board, 'H', 8)) << "Black rook not at H8";
+    ASSERT_EQ('r', pieceAt(&board, R8, A)) << "Black rook not at A8";
+    ASSERT_EQ('n', pieceAt(&board, R8, B)) << "Black knight not at B8";
+    ASSERT_EQ('b', pieceAt(&board, R8, C)) << "Black bishop not at C8";
+    ASSERT_EQ('q', pieceAt(&board, R8, D)) << "Black queen not at D8";
+    ASSERT_EQ('k', pieceAt(&board, R8, E)) << "Black king not at E8";
+    ASSERT_EQ('b', pieceAt(&board, R8, F)) << "Black bishop not at F8";
+    ASSERT_EQ('n', pieceAt(&board, R8, G)) << "Black knight not at G8";
+    ASSERT_EQ('r', pieceAt(&board, R8, H)) << "Black rook not at H8";
 }
 
 // test movePiece failures
 TEST(ChessBoard_movePiece, badInput)
 {
+    enum ChessBoardRank rank;
+    enum ChessBoardFile file;
     struct ChessBoard board;
+    
     initializeForGame(&board);
     
-    ASSERT_EQ(0, movePiece(&board, 'A', 1, 'A', 1)) << "Moving a piece to itself didn't return failure as expected";
+    ASSERT_EQ(0, movePiece(&board, R1, A, R1, A)) << "Moving a piece to itself didn't return failure as expected";
     
     // test moving from empty cells fails
-    for(char rank = 'A'; rank <= 'H'; rank++)
+    for(file = A; file <= H; file++)
     {
-        for(int file = 3; file <= 6; file++)
+        for(rank = R3; rank <= R6; rank++)
         {
-            ASSERT_EQ(0, movePiece(&board, rank, file, 'A', 1)) <<  "Trying to move from an empty cell at " << rank << file << " didn't return failure as expected";
+            ASSERT_EQ(0, movePiece(&board, rank, file, R1, A)) <<  "Trying to move from an empty cell at " << file << rank << " didn't return failure as expected";
         }
     }
-    
-    ASSERT_EQ(0, movePiece(&board, 'I', 1, 'A', 1)) << "Moving from an invalid cell didn't return failure as expected";
-    ASSERT_EQ(0, movePiece(&board, 'B', 1, 'I', 1)) << "Moving to an invalid cell didn't return failure as expected";
 }
 
 // test movePiece successes
@@ -110,12 +124,60 @@ TEST(ChessBoard_movePiece, goodInput)
     struct ChessBoard board;
     initializeForGame(&board);
     
-    ASSERT_EQ(1, movePiece(&board, 'E', 2, 'E', 4)) << "Moving piece from valid location to another valid location didn't return success.";
-    ASSERT_EQ(' ', pieceAt(&board, 'E', 2)) << "After moving king's pawn, the old space wasn't empty";
-    ASSERT_EQ('P', pieceAt(&board, 'E', 4)) << "After moving pawn, the new location didn't contain the pawn";
+    ASSERT_EQ(1, movePiece(&board, R2, E, R4, E)) << "Moving piece from valid location to another valid location didn't return success.";
+    ASSERT_EQ(' ', pieceAt(&board, R2, E)) << "After moving king's pawn, the old space wasn't empty";
+    ASSERT_EQ('P', pieceAt(&board, R4, E)) << "After moving pawn, the new location didn't contain the pawn";
     
     // move black's queen's pawn to take this pawn - impossible move, but movePiece doesn't check
-    ASSERT_EQ(1, movePiece(&board, 'D', 7, 'E', 4)) << "Moving piece from valid location to another valid location didn't return success.";
-    ASSERT_EQ(' ', pieceAt(&board, 'D', 7)) << "After moving pawn, the old space wasn't empty";
-    ASSERT_EQ('p', pieceAt(&board, 'E', 4)) << "After moving pawn, the new location didn't contain the pawn";
+    ASSERT_EQ(1, movePiece(&board, R7, D, R4, E)) << "Moving piece from valid location to another valid location didn't return success.";
+    ASSERT_EQ(' ', pieceAt(&board, R7, D)) << "After moving pawn, the old space wasn't empty";
+    ASSERT_EQ('p', pieceAt(&board, R4, E)) << "After moving pawn, the new location didn't contain the pawn";
+}
+
+// test validMoves for pawns on a fresh board
+TEST(ChessBoard_validMoves, pawnsWithFreshBoard)
+{
+    struct ChessBoard board;
+    ChessBoardFile file;
+    char validLocations[65];
+    char expectedValidLocations[65];
+    
+    // testing with a fresh board
+    initializeForGame(&board);
+    
+    // try each white pawn
+    for(file = A; file <= H; file++)
+    {
+        // build up our resulted valid expections
+        helperEmptyValidLocations(expectedValidLocations);
+        helperAddValidLocation(expectedValidLocations, R2, file);
+        helperAddValidLocation(expectedValidLocations, R3, file);
+        
+        ASSERT_EQ(2, validMoves(&board, R2, file, validLocations));
+        ASSERT_STREQ(expectedValidLocations, validLocations);
+    }
+    
+    // try each black pawn
+    for(file = A; file <= H; file++)
+    {
+        // build up our resulted valid expections
+        helperEmptyValidLocations(expectedValidLocations);
+        helperAddValidLocation(expectedValidLocations, R6, file);
+        helperAddValidLocation(expectedValidLocations, R5, file);
+        
+        ASSERT_EQ(2, validMoves(&board, R7, file, validLocations));
+        ASSERT_STREQ(expectedValidLocations, validLocations);
+    }
+}
+
+// test validMoves for pawns in attacking position
+TEST(ChessBoard_validMoves, pawnsInAttackingPosition)
+{
+    // TODO
+}
+
+// test validMoves for pawns with nowhere to go
+TEST(ChessBoard_validMoves, pawnsWithNowhereToGo)
+{
+    // TODO
 }

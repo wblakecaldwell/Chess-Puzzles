@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>8048AE72-D07A-4236-8C65-0B10E2BBEBBC</string>
+	<string>D349F369-F5FF-4331-9CD9-949412918E60</string>
 	<key>IDESourceControlProjectName</key>
 	<string>ChessPuzzles</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>CAA0DCDF-0108-4240-9B76-4A9343D2AFF7</key>
-		<string>file:///Volumes/2TBRepository/Git/Chess-Puzzles.git/</string>
+		<key>580441D2-8D4D-4535-99A7-2E4E5B2023ED</key>
+		<string>ssh://github.com/wblakecaldwell/Chess-Puzzles.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>ChessPuzzles.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>CAA0DCDF-0108-4240-9B76-4A9343D2AFF7</key>
+		<key>580441D2-8D4D-4535-99A7-2E4E5B2023ED</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>file:///Volumes/2TBRepository/Git/Chess-Puzzles.git/</string>
+	<string>ssh://github.com/wblakecaldwell/Chess-Puzzles.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>CAA0DCDF-0108-4240-9B76-4A9343D2AFF7</string>
+	<string>580441D2-8D4D-4535-99A7-2E4E5B2023ED</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CAA0DCDF-0108-4240-9B76-4A9343D2AFF7</string>
+			<string>580441D2-8D4D-4535-99A7-2E4E5B2023ED</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Chess-Puzzles</string>
 		</dict>
