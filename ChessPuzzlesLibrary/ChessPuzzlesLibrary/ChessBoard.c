@@ -85,8 +85,14 @@ int movePiece(struct ChessBoard *board, enum ChessBoardRank rankFrom, enum Chess
         return 0;
     }
     
-    board->pieces[pieceIndexAt(rankFrom, fileFrom)] = ' ';
-    board->pieces[pieceIndexAt(rankTo, fileTo)] = pieceFrom;
+    setPiece(board, ' ', rankFrom, fileFrom);
+    setPiece(board, pieceFrom, rankTo, fileTo);
+    return 1;
+}
+
+int setPiece(struct ChessBoard *board, char piece, enum ChessBoardRank rank, enum ChessBoardFile file)
+{
+    board->pieces[pieceIndexAt(rank, file)] = piece;
     return 1;
 }
 

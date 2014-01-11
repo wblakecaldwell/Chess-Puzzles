@@ -77,11 +77,15 @@ int initializeForGame(struct ChessBoard *board);
  */
 char pieceAt(struct ChessBoard *board, enum ChessBoardRank rank, enum ChessBoardFile file);
 
+/**
+  * Set a piece on the board.
+  */
+int setPiece(struct ChessBoard *board, char piece, enum ChessBoardRank rank, enum ChessBoardFile file);
+
 /*
  * Move a piece to a new location, returning 1 if a piece was moved, 0 if no piece was moved.
  */
 int movePiece(struct ChessBoard *board, enum ChessBoardRank rankFrom, enum ChessBoardFile fileFrom, enum ChessBoardRank rankTo, enum ChessBoardFile fileTo);
-
 
 /*
  * Figure out all of the valid squares for the piece at the input position, storing them in |validLocations| 

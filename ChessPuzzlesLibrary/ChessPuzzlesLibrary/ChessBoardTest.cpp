@@ -170,11 +170,143 @@ TEST(ChessBoard_validMoves, pawnsWithFreshBoard)
     }
 }
 
-// test validMoves for pawns in attacking position
-TEST(ChessBoard_validMoves, pawnsInAttackingPosition)
+// test validMoves for a white pawn with two attacks and no move forward
+TEST(ChessBoard_validMoves, whitePawnWithTwoAttacksAndNoForward)
 {
-    // TODO
+    struct ChessBoard board;
+    char validLocations[65];
+    char expectedValidLocations[65];
+    
+    // testing with a fresh board
+    initializeForGame(&board);
+    
+    // move white pawn to d6 - should have two moves, attacking
+    movePiece(&board, R2, D, R6, D);
+    
+    helperEmptyValidLocations(expectedValidLocations);
+    helperAddValidLocation(expectedValidLocations, R7, C);
+    helperAddValidLocation(expectedValidLocations, R7, E);
+    ASSERT_EQ(2, validMoves(&board, R6, D, validLocations));
+    ASSERT_STREQ(expectedValidLocations, validLocations);
 }
+
+// test validMoves for a white pawn with two attacks and valid move forward
+TEST(ChessBoard_validMoves, whitePawnWithTwoAttacksAndEmptySpaceInFront)
+{
+    struct ChessBoard board;
+    char validLocations[65];
+    char expectedValidLocations[65];
+    
+    // testing with a fresh board
+    initializeForGame(&board);
+    
+    // move white pawn to d6 - should have two moves, attacking
+    movePiece(&board, R2, D, R6, D);
+    
+    // remove piece at D7, so we can move forward
+    setPiece(&board, ' ', R7, D);
+    
+    helperEmptyValidLocations(expectedValidLocations);
+    helperAddValidLocation(expectedValidLocations, R7, C);
+    helperAddValidLocation(expectedValidLocations, R7, D);
+    helperAddValidLocation(expectedValidLocations, R7, E);
+    ASSERT_EQ(3, validMoves(&board, R6, D, validLocations));
+    ASSERT_STREQ(expectedValidLocations, validLocations);
+}
+
+// test validMoves for a white pawn with left attack and valid move forward
+TEST(ChessBoard_validMoves, whitePawnWithLeftAttackAndEmptySpaceInFront)
+{
+    struct ChessBoard board;
+    char validLocations[65];
+    char expectedValidLocations[65];
+    
+    // testing with a fresh board
+    initializeForGame(&board);
+    
+    // move white pawn to d6 - should have two moves, attacking
+    movePiece(&board, R2, D, R6, D);
+    
+    // remove pieces at D7 and E7 so we can move forward, and lose right attack
+    setPiece(&board, ' ', R7, D);
+    setPiece(&board, ' ', R7, E);
+    
+    helperEmptyValidLocations(expectedValidLocations);
+    helperAddValidLocation(expectedValidLocations, R7, C);
+    helperAddValidLocation(expectedValidLocations, R7, D);
+    ASSERT_EQ(2, validMoves(&board, R6, D, validLocations));
+    ASSERT_STREQ(expectedValidLocations, validLocations);
+}
+
+// test validMoves for a white pawn with right attack and valid move forward
+TEST(ChessBoard_validMoves, whitePawnWithRightAttackAndEmptySpaceInFront)
+{
+    struct ChessBoard board;
+    char validLocations[65];
+    char expectedValidLocations[65];
+    
+    // testing with a fresh board
+    initializeForGame(&board);
+    
+    // move white pawn to d6 - should have two moves, attacking
+    movePiece(&board, R2, D, R6, D);
+    
+    // remove pieces at C7 and D7 so we can move forward and lose left attack
+    setPiece(&board, ' ', R7, C);
+    setPiece(&board, ' ', R7, D);
+    
+    helperEmptyValidLocations(expectedValidLocations);
+    helperAddValidLocation(expectedValidLocations, R7, D);
+    helperAddValidLocation(expectedValidLocations, R7, E);
+    ASSERT_EQ(2, validMoves(&board, R6, D, validLocations));
+    ASSERT_STREQ(expectedValidLocations, validLocations);
+}
+
+// test validMoves for a white pawn with left attack and no move forward
+TEST(ChessBoard_validMoves, whitePawnWithLeftAttackAndNoForward)
+{
+    struct ChessBoard board;
+    char validLocations[65];
+    char expectedValidLocations[65];
+    
+    // testing with a fresh board
+    initializeForGame(&board);
+    
+    // move white pawn to d6 - should have two moves, attacking
+    movePiece(&board, R2, D, R6, D);
+    
+    // remove right attack
+    setPiece(&board, ' ', R7, E);
+    
+    helperEmptyValidLocations(expectedValidLocations);
+    helperAddValidLocation(expectedValidLocations, R7, C);
+    ASSERT_EQ(1, validMoves(&board, R6, D, validLocations));
+    ASSERT_STREQ(expectedValidLocations, validLocations);
+}
+
+// test validMoves for a white pawn with right attack and no move forward
+TEST(ChessBoard_validMoves, whitePawnWithRightAttackAndNoForward)
+{
+    struct ChessBoard board;
+    char validLocations[65];
+    char expectedValidLocations[65];
+    
+    // testing with a fresh board
+    initializeForGame(&board);
+    
+    // move white pawn to d6 - should have two moves, attacking
+    movePiece(&board, R2, D, R6, D);
+    
+    // remove left attack
+    setPiece(&board, ' ', R7, C);
+    
+    helperEmptyValidLocations(expectedValidLocations);
+    helperAddValidLocation(expectedValidLocations, R7, E);
+    ASSERT_EQ(1, validMoves(&board, R6, D, validLocations));
+    ASSERT_STREQ(expectedValidLocations, validLocations);
+}
+
+
 
 // test validMoves for pawns with nowhere to go
 TEST(ChessBoard_validMoves, pawnsWithNowhereToGo)
