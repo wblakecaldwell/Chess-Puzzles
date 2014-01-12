@@ -29,10 +29,10 @@ TEST(ChessBoard_validMoves, pawnsWithFreshBoard)
     {
         // build up our resulted valid expections
         helperEmptyValidLocations(expectedValidLocations);
-        helperAddValidLocation(expectedValidLocations, R3, file);
-        helperAddValidLocation(expectedValidLocations, R4, file);
+        helperAddValidLocation(expectedValidLocations, file, R3);
+        helperAddValidLocation(expectedValidLocations, file, R4);
         
-        ASSERT_EQ(2, validMoves(&board, R2, file, validLocations));
+        ASSERT_EQ(2, validMoves(&board, file, R2, validLocations)) << "Expected 2 moves for white pawn at file: " << file;
         ASSERT_STREQ(expectedValidLocations, validLocations);
     }
     
@@ -41,10 +41,10 @@ TEST(ChessBoard_validMoves, pawnsWithFreshBoard)
     {
         // build up our resulted valid expections
         helperEmptyValidLocations(expectedValidLocations);
-        helperAddValidLocation(expectedValidLocations, R6, file);
-        helperAddValidLocation(expectedValidLocations, R5, file);
+        helperAddValidLocation(expectedValidLocations, file, R6);
+        helperAddValidLocation(expectedValidLocations, file, R5);
         
-        ASSERT_EQ(2, validMoves(&board, R7, file, validLocations));
+        ASSERT_EQ(2, validMoves(&board, file, R7, validLocations));
         ASSERT_STREQ(expectedValidLocations, validLocations);
     }
 }
@@ -60,9 +60,9 @@ TEST(ChessBoard_validMoves, whitePawnWithTwoAttacksAndNoForward)
     initializeForGame(&board);
     
     // move white pawn to d6 - should have two moves, attacking
-    movePiece(&board, R2, D, R6, D);
+    movePiece(&board, D, R2, D, R6);
     helperSetValidLocations(expectedValidLocations, (const char*[]){"C7", "E7", 0}); // note: replace E8 with E7
-    ASSERT_EQ(2, validMoves(&board, R6, D, validLocations));
+    ASSERT_EQ(2, validMoves(&board, D, R6, validLocations));
     ASSERT_STREQ(expectedValidLocations, validLocations);
 }
 
@@ -77,16 +77,16 @@ TEST(ChessBoard_validMoves, whitePawnWithTwoAttacksAndEmptySpaceInFront)
     initializeForGame(&board);
     
     // move white pawn to d6 - should have two moves, attacking
-    movePiece(&board, R2, D, R6, D);
+    movePiece(&board, D, R2, D, R6);
     
     // remove piece at D7, so we can move forward
-    setPiece(&board, ' ', R7, D);
+    setPiece(&board, ' ', D, R7);
     
     helperEmptyValidLocations(expectedValidLocations);
-    helperAddValidLocation(expectedValidLocations, R7, C);
-    helperAddValidLocation(expectedValidLocations, R7, D);
-    helperAddValidLocation(expectedValidLocations, R7, E);
-    ASSERT_EQ(3, validMoves(&board, R6, D, validLocations));
+    helperAddValidLocation(expectedValidLocations, C, R7);
+    helperAddValidLocation(expectedValidLocations, D, R7);
+    helperAddValidLocation(expectedValidLocations, E, R7);
+    ASSERT_EQ(3, validMoves(&board, D, R6, validLocations));
     ASSERT_STREQ(expectedValidLocations, validLocations);
 }
 
@@ -101,16 +101,16 @@ TEST(ChessBoard_validMoves, whitePawnWithLeftAttackAndEmptySpaceInFront)
     initializeForGame(&board);
     
     // move white pawn to d6 - should have two moves, attacking
-    movePiece(&board, R2, D, R6, D);
+    movePiece(&board, D, R2, D, R6);
     
     // remove pieces at D7 and E7 so we can move forward, and lose right attack
-    setPiece(&board, ' ', R7, D);
-    setPiece(&board, ' ', R7, E);
+    setPiece(&board, ' ', D, R7);
+    setPiece(&board, ' ', E, R7);
     
     helperEmptyValidLocations(expectedValidLocations);
-    helperAddValidLocation(expectedValidLocations, R7, C);
-    helperAddValidLocation(expectedValidLocations, R7, D);
-    ASSERT_EQ(2, validMoves(&board, R6, D, validLocations));
+    helperAddValidLocation(expectedValidLocations, C, R7);
+    helperAddValidLocation(expectedValidLocations, D, R7);
+    ASSERT_EQ(2, validMoves(&board, D, R6, validLocations));
     ASSERT_STREQ(expectedValidLocations, validLocations);
 }
 
@@ -125,16 +125,16 @@ TEST(ChessBoard_validMoves, whitePawnWithRightAttackAndEmptySpaceInFront)
     initializeForGame(&board);
     
     // move white pawn to d6 - should have two moves, attacking
-    movePiece(&board, R2, D, R6, D);
+    movePiece(&board, D, R2, D, R6);
     
     // remove pieces at C7 and D7 so we can move forward and lose left attack
-    setPiece(&board, ' ', R7, C);
-    setPiece(&board, ' ', R7, D);
+    setPiece(&board, ' ', C, R7);
+    setPiece(&board, ' ', D, R7);
     
     helperEmptyValidLocations(expectedValidLocations);
-    helperAddValidLocation(expectedValidLocations, R7, D);
-    helperAddValidLocation(expectedValidLocations, R7, E);
-    ASSERT_EQ(2, validMoves(&board, R6, D, validLocations));
+    helperAddValidLocation(expectedValidLocations, D, R7);
+    helperAddValidLocation(expectedValidLocations, E, R7);
+    ASSERT_EQ(2, validMoves(&board, D, R6, validLocations));
     ASSERT_STREQ(expectedValidLocations, validLocations);
 }
 
@@ -149,14 +149,14 @@ TEST(ChessBoard_validMoves, whitePawnWithLeftAttackAndNoForward)
     initializeForGame(&board);
     
     // move white pawn to d6 - should have two moves, attacking
-    movePiece(&board, R2, D, R6, D);
+    movePiece(&board, D, R2, D, R6);
     
     // remove right attack
-    setPiece(&board, ' ', R7, E);
+    setPiece(&board, ' ', E, R7);
     
     helperEmptyValidLocations(expectedValidLocations);
-    helperAddValidLocation(expectedValidLocations, R7, C);
-    ASSERT_EQ(1, validMoves(&board, R6, D, validLocations));
+    helperAddValidLocation(expectedValidLocations, C, R7);
+    ASSERT_EQ(1, validMoves(&board, D, R6, validLocations));
     ASSERT_STREQ(expectedValidLocations, validLocations);
 }
 
@@ -171,13 +171,26 @@ TEST(ChessBoard_validMoves, whitePawnWithRightAttackAndNoForward)
     initializeForGame(&board);
     
     // move white pawn to d6 - should have two moves, attacking
-    movePiece(&board, R2, D, R6, D);
+    movePiece(&board, D, R2, D, R6);
     
     // remove left attack
-    setPiece(&board, ' ', R7, C);
+    setPiece(&board, ' ', C, R7);
     
     helperEmptyValidLocations(expectedValidLocations);
-    helperAddValidLocation(expectedValidLocations, R7, E);
-    ASSERT_EQ(1, validMoves(&board, R6, D, validLocations));
+    helperAddValidLocation(expectedValidLocations, E, R7);
+    ASSERT_EQ(1, validMoves(&board, D, R6, validLocations));
     ASSERT_STREQ(expectedValidLocations, validLocations);
+}
+
+
+// test validMoves for pawn with nowhere to go
+TEST(ChessBoard_validMoves, pawnsWithNowhereToGo)
+{
+    struct ChessBoard board;
+    char validLocations[65];
+    char expectedLocations[65];
+    
+    initializeEmpty(&board);
+    
+    // two pawns on the same file, then make sure neither can move
 }

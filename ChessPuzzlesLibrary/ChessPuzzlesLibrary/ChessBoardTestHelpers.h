@@ -23,7 +23,7 @@ int helperEmptyValidLocations(char validLocations[65]);
 /*
  * Add a valid location by rank and file.
  */
-int helperAddValidLocation(char validLocations[65], enum ChessBoardRank rank, enum ChessBoardFile file);
+int helperAddValidLocation(char validLocations[65], enum ChessBoardFile file, enum ChessBoardRank rank);
 
 /*
  * set the valid locations inside validLocations - valid locations are set 1, else 0. |locations| should be

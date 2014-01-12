@@ -72,25 +72,30 @@ struct ChessBoard
 int initializeForGame(struct ChessBoard *board);
 
 /*
+ * Initialize the input board as empty.
+ */
+int initializeEmpty(struct ChessBoard *board);
+
+/*
  * Get the piece at the input rank and file, where rank is uppercased A-H, file is 1-8.
  * Return 0 on failure.
  */
-char pieceAt(struct ChessBoard *board, enum ChessBoardRank rank, enum ChessBoardFile file);
+char pieceAt(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoardRank rank);
 
 /**
   * Set a piece on the board.
   */
-int setPiece(struct ChessBoard *board, char piece, enum ChessBoardRank rank, enum ChessBoardFile file);
+int setPiece(struct ChessBoard *board, char piece, enum ChessBoardFile file, enum ChessBoardRank rank);
 
 /*
  * Move a piece to a new location, returning 1 if a piece was moved, 0 if no piece was moved.
  */
-int movePiece(struct ChessBoard *board, enum ChessBoardRank rankFrom, enum ChessBoardFile fileFrom, enum ChessBoardRank rankTo, enum ChessBoardFile fileTo);
+int movePiece(struct ChessBoard *board, enum ChessBoardFile fileFrom, enum ChessBoardRank rankFrom, enum ChessBoardFile fileTo, enum ChessBoardRank rankTo);
 
 /*
  * Figure out all of the valid squares for the piece at the input position, storing them in |validLocations| 
  * as either '0' (no) or '1' (yes).
  */
-int validMoves(struct ChessBoard *board, enum ChessBoardRank rank, enum ChessBoardFile file, char validLocations[65]);
+int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoardRank rank, char validLocations[65]);
 
 #endif

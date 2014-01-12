@@ -13,7 +13,7 @@
 /*
  * (PRIVATE) Return the pieces string index based on rank/file.
  */
-int pieceIndexAt(enum ChessBoardRank rank, enum ChessBoardFile file)
+int pieceIndexAt(enum ChessBoardFile file, enum ChessBoardRank rank)
 {
     return ((rank-1) * 8) + file - 1;
 }
@@ -52,12 +52,18 @@ int initializeForGame(struct ChessBoard *board)
     return 1;
 }
 
-char pieceAt(struct ChessBoard *board, enum ChessBoardRank rank, enum ChessBoardFile file)
+int initializeEmpty(struct ChessBoard *board)
 {
-    return board->pieces[pieceIndexAt(rank, file)];
+    strcpy(board->pieces, "                                                                ");
+    return 1;
 }
 
-int movePiece(struct ChessBoard *board, enum ChessBoardRank rankFrom, enum ChessBoardFile fileFrom, enum ChessBoardRank rankTo, enum ChessBoardFile fileTo)
+char pieceAt(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoardRank rank)
+{
+    return board->pieces[pieceIndexAt(file, rank)];
+}
+
+int movePiece(struct ChessBoard *board, enum ChessBoardFile fileFrom, enum ChessBoardRank rankFrom, enum ChessBoardFile fileTo, enum ChessBoardRank rankTo)
 {
     char pieceFrom;
     char pieceTo;
@@ -70,7 +76,7 @@ int movePiece(struct ChessBoard *board, enum ChessBoardRank rankFrom, enum Chess
     }
     
     // make sure there's a piece to move
-    pieceFrom = pieceAt(board, rankFrom, fileFrom);
+    pieceFrom = pieceAt(board, fileFrom, rankFrom);
     if(' ' == pieceFrom || 0 == pieceFrom)
     {
         // there's no piece here
@@ -78,25 +84,25 @@ int movePiece(struct ChessBoard *board, enum ChessBoardRank rankFrom, enum Chess
     }
     
     // make sure the target cell is valid
-    pieceTo = pieceAt(board, rankTo, fileTo);
+    pieceTo = pieceAt(board, fileTo, rankTo);
     if(0 == pieceTo)
     {
         // invalid destination
         return 0;
     }
     
-    setPiece(board, ' ', rankFrom, fileFrom);
-    setPiece(board, pieceFrom, rankTo, fileTo);
+    setPiece(board, ' ', fileFrom, rankFrom);
+    setPiece(board, pieceFrom, fileTo, rankTo);
     return 1;
 }
 
-int setPiece(struct ChessBoard *board, char piece, enum ChessBoardRank rank, enum ChessBoardFile file)
+int setPiece(struct ChessBoard *board, char piece, enum ChessBoardFile file, enum ChessBoardRank rank)
 {
-    board->pieces[pieceIndexAt(rank, file)] = piece;
+    board->pieces[pieceIndexAt(file, rank)] = piece;
     return 1;
 }
 
-int validMoves(struct ChessBoard *board, enum ChessBoardRank rank, enum ChessBoardFile file, char validLocations[65])
+int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoardRank rank, char validLocations[65])
 {
     char pieceFrom;
     char pieceTo;
@@ -106,7 +112,7 @@ int validMoves(struct ChessBoard *board, enum ChessBoardRank rank, enum ChessBoa
     validMoveCount = 0;
     
     // make sure there's a piece to move
-    pieceFrom = pieceAt(board, rank, file);
+    pieceFrom = pieceAt(board, file, rank);
     if(' ' == pieceFrom || 0 == pieceFrom)
     {
         // there's no piece here
@@ -124,72 +130,72 @@ int validMoves(struct ChessBoard *board, enum ChessBoardRank rank, enum ChessBoa
     {
         case 'P':   // white pawn
             // * pawn can move forward (up) one space if nobody's in front
-            if(' ' == pieceAt(board, rank+1, file))
+            if(' ' == pieceAt(board, file, rank+1))
             {
                 validMoveCount++;
-                validLocations[pieceIndexAt(rank+1, file)] = '1';
+                validLocations[pieceIndexAt(file, (enum ChessBoardRank)(rank+1))] = '1';
             }
             
             // * pawn can move two spaces foward (up) if on rank 2 and nobody's there
-            if(R2 == rank && ' ' == pieceAt(board, rank+2, file))
+            if(R2 == rank && ' ' == pieceAt(board, file, rank+2))
             {
                 validMoveCount++;
-                validLocations[pieceIndexAt(4, file)] = '1';
+                validLocations[pieceIndexAt(file, 4)] = '1';
             }
             
             // * pawn can move forward (up) diagonal if an opponent is there
             
             // check attack left
-            pieceTo = pieceAt(board, rank+1, file-1);
+            pieceTo = pieceAt(board, file-1, rank+1);
             if(BLACK == colorOf(pieceTo))
             {
                 // we can take this piece!
                 validMoveCount++;
-                validLocations[pieceIndexAt(rank+1, file-1)] = '1';
+                validLocations[pieceIndexAt(file-1, rank+1)] = '1';
             }
             
             // check attack right
-            pieceTo = pieceAt(board, rank+1, file+1);
+            pieceTo = pieceAt(board, file+1, rank+1);
             if(BLACK == colorOf(pieceTo))
             {
                 validMoveCount++;
-                validLocations[pieceIndexAt(rank+1, file+1)] = '1';
+                validLocations[pieceIndexAt(file+1, rank+1)] = '1';
             }
             
             break;
         
         case 'p':   // black pawn
             // * pawn can move forward (down) one space if nobody's in front
-            if(' ' == pieceAt(board, rank-1, file))
+            if(' ' == pieceAt(board, (enum ChessBoardFile)file, (enum ChessBoardRank)rank-1))
             {
                 validMoveCount++;
-                validLocations[pieceIndexAt(rank-1, file)] = '1';
+                validLocations[pieceIndexAt((enum ChessBoardFile)file, rank-1)] = '1';
             }
             
             // * pawn can move two spaces foward (down) if on rank 7
-            if(R7 == rank && ' ' == pieceAt(board, rank-2, file))
+            if(R7 == rank && ' ' == pieceAt(board, file, rank-2))
             {
                 validMoveCount++;
-                validLocations[pieceIndexAt(rank-2, file)] = '1';
+                validLocations[pieceIndexAt(file, rank-2)] = '1';
             }
             
             // * pawn can move foward (down) diagonal if an opponent is there
             
             // check attack left
-            pieceTo = pieceAt(board, rank-1, file-1);
+            pieceTo = pieceAt(board, file-1, rank-1);
             if(WHITE == colorOf(pieceTo))
             {
                 // we can take this piece!
                 validMoveCount++;
-                validLocations[pieceIndexAt(rank-1, file-1)] = '1';
+                validLocations[pieceIndexAt((enum ChessBoardFile)file-1, (enum ChessBoardRank)rank-1)] = '1';
             }
             
             // check attack right
-            pieceTo = pieceAt(board, rank-1, file+1);
+            pieceTo = pieceAt(board, file+1, rank-1);
             if(WHITE == colorOf(pieceTo))
             {
                 validMoveCount++;
-                validLocations[pieceIndexAt(rank-1, file+1)] = '1';
+                validLocations[pieceIndexAt((enum ChessBoardFile)file+1, (enum ChessBoardRank)rank-1)] = '1';
             }
             break;
         

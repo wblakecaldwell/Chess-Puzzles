@@ -24,7 +24,7 @@ int helperEmptyValidLocations(char validLocations[65])
     return 1;
 }
 
-int helperAddValidLocation(char validLocations[65], enum ChessBoardRank rank, enum ChessBoardFile file)
+int helperAddValidLocation(char validLocations[65], enum ChessBoardFile file, enum ChessBoardRank rank)
 {
     validLocations[((rank-1) * 8) + file - 1] = '1';
     return 1;
@@ -44,7 +44,7 @@ int helperSetValidLocations(char validLocations[65], const char *locations[])
         file = location[0] - 'A' + 1;
         rank = location[1] - '0';
         
-        helperAddValidLocation(validLocations, (enum ChessBoardRank)rank, (enum ChessBoardFile)file);
+        helperAddValidLocation(validLocations, (enum ChessBoardFile)file, (enum ChessBoardRank)rank);
     }
     
     return 1;
