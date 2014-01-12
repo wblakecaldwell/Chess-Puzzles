@@ -51,6 +51,7 @@ TEST(ChessBoard_validMoves, whitePawnWithTwoAttacksAndNoForward)
     
     // move white pawn to d6 - should have two moves, attacking
     movePiece(&board, D, R2, D, R6);
+    
     helperSetValidLocations(expectedValidLocations, (const char*[]){"C7", "E7", 0});
     ASSERT_EQ(2, validMoves(&board, D, R6, validLocations));
     ASSERT_STREQ(expectedValidLocations, validLocations);

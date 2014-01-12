@@ -104,6 +104,7 @@ int setPiece(struct ChessBoard *board, char piece, enum ChessBoardFile file, enu
 
 int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoardRank rank, char validLocations[65])
 {
+    enum ChessPieceColor pieceColor;
     char pieceFrom;
     char pieceTo;
     int i;
@@ -200,7 +201,115 @@ int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoa
             break;
         
         case 'R':   // white rook
-            // TODO
+            
+            // check how far we can move left
+            for(i = file-1; i >= 1; i--)
+            {
+                pieceTo = pieceAt(board, i, rank);
+                // make sure there's no white piece here
+                pieceColor = colorOf(pieceTo);
+                if(WHITE == pieceColor)
+                {
+                    // we're done
+                    break;
+                }
+                
+                if(BLACK == pieceColor)
+                {
+                    // we're done, but we can move here
+                    validMoveCount++;
+                    validLocations[pieceIndexAt((enum ChessBoardFile)i, (enum ChessBoardRank)rank)] = '1';
+                    break;
+                }
+                if(NO_PIECE == pieceColor)
+                {
+                    // we can move here
+                    validMoveCount++;
+                    validLocations[pieceIndexAt((enum ChessBoardFile)i, (enum ChessBoardRank)rank)] = '1';
+                }
+            }
+            
+            // check how far we can move right
+            for(i = file+1; i <= 8; i++)
+            {
+                pieceTo = pieceAt(board, i, rank);
+                // make sure there's no white piece here
+                pieceColor = colorOf(pieceTo);
+                if(WHITE == pieceColor)
+                {
+                    // we're done
+                    break;
+                }
+                
+                if(BLACK == pieceColor)
+                {
+                    // we're done, but we can move here
+                    validMoveCount++;
+                    validLocations[pieceIndexAt((enum ChessBoardFile)i, (enum ChessBoardRank)rank)] = '1';
+                    break;
+                }
+                if(NO_PIECE == pieceColor)
+                {
+                    // we can move here
+                    validMoveCount++;
+                    validLocations[pieceIndexAt((enum ChessBoardFile)i, (enum ChessBoardRank)rank)] = '1';
+                }
+            }
+            
+            // check how far we can move up
+            for(i = rank+1; i <= 8; i++)
+            {
+                pieceTo = pieceAt(board, file, i);
+                // make sure there's no white piece here
+                pieceColor = colorOf(pieceTo);
+                if(WHITE == pieceColor)
+                {
+                    // we're done
+                    break;
+                }
+                
+                if(BLACK == pieceColor)
+                {
+                    // we're done, but we can move here
+                    validMoveCount++;
+                    validLocations[pieceIndexAt((enum ChessBoardFile)file, (enum ChessBoardRank)i)] = '1';
+                    break;
+                }
+                if(NO_PIECE == pieceColor)
+                {
+                    // we can move here
+                    validMoveCount++;
+                    validLocations[pieceIndexAt((enum ChessBoardFile)file, (enum ChessBoardRank)i)] = '1';
+                }
+            }
+            
+            // check how far we can move down
+            for(i = rank-1; i >= 1; i--)
+            {
+                pieceTo = pieceAt(board, file, i);
+                // make sure there's no white piece here
+                pieceColor = colorOf(pieceTo);
+                if(WHITE == pieceColor)
+                {
+                    // we're done
+                    break;
+                }
+                
+                if(BLACK == pieceColor)
+                {
+                    // we're done, but we can move here
+                    validMoveCount++;
+                    validLocations[pieceIndexAt((enum ChessBoardFile)file, (enum ChessBoardRank)i)] = '1';
+                    break;
+                }
+                if(NO_PIECE == pieceColor)
+                {
+                    // we can move here
+                    validMoveCount++;
+                    validLocations[pieceIndexAt((enum ChessBoardFile)file, (enum ChessBoardRank)i)] = '1';
+                }
+            }
+            
             break;
         
         case 'r':   // black rook
