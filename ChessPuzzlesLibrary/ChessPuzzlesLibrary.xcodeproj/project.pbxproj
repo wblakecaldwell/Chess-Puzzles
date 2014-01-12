@@ -26,6 +26,8 @@
 		B2D9441D187BBEFC002BBCB8 /* ChessBoardTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2D9433F187A6EE1002BBCB8 /* ChessBoardTest.cpp */; };
 		B2D9441E187BBF16002BBCB8 /* libChessPuzzlesLibrary.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D943C3187BAEE9002BBCB8 /* libChessPuzzlesLibrary.dylib */; };
 		B2D9441F187BBF16002BBCB8 /* libgtest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D943CD187BAF98002BBCB8 /* libgtest.a */; };
+		B2F31FC8188246D9007AAC4D /* ChessBoard_BlackPawnTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2F31FC4188243CF007AAC4D /* ChessBoard_BlackPawnTests.cpp */; };
+		B2F31FC9188246D9007AAC4D /* ChessBoard_BlackPawnTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2F31FC4188243CF007AAC4D /* ChessBoard_BlackPawnTests.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,7 @@
 		B2D94410187BB6D5002BBCB8 /* GoogleTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GoogleTests.mm; sourceTree = "<group>"; };
 		B2D94412187BB6FF002BBCB8 /* GoogleTestStub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleTestStub.h; sourceTree = "<group>"; };
 		B2D94413187BB6FF002BBCB8 /* GoogleTestStub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleTestStub.m; sourceTree = "<group>"; };
+		B2F31FC4188243CF007AAC4D /* ChessBoard_BlackPawnTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChessBoard_BlackPawnTests.cpp; sourceTree = "<group>"; };
 		B2FBB990187A5F7100382BAC /* ChessBoard.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ChessBoard.c; sourceTree = "<group>"; };
 		B2FBB992187A5F7A00382BAC /* ChessBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChessBoard.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,6 +151,7 @@
 			children = (
 				B2D9433F187A6EE1002BBCB8 /* ChessBoardTest.cpp */,
 				B20066D21881F3EB000EFF45 /* ChessBoard_WhitePawnTests.cpp */,
+				B2F31FC4188243CF007AAC4D /* ChessBoard_BlackPawnTests.cpp */,
 			);
 			name = ChessBoardTests;
 			sourceTree = "<group>";
@@ -405,6 +409,7 @@
 				B2D9441D187BBEFC002BBCB8 /* ChessBoardTest.cpp in Sources */,
 				B2D943F3187BB355002BBCB8 /* main.cpp in Sources */,
 				B20066D41881F3EB000EFF45 /* ChessBoard_WhitePawnTests.cpp in Sources */,
+				B2F31FC9188246D9007AAC4D /* ChessBoard_BlackPawnTests.cpp in Sources */,
 				B20066DC1881F49D000EFF45 /* ChessBoardTestHelpers.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +418,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2F31FC8188246D9007AAC4D /* ChessBoard_BlackPawnTests.cpp in Sources */,
 				B2D94411187BB6D5002BBCB8 /* GoogleTests.mm in Sources */,
 				B2D94407187BB3B5002BBCB8 /* ChessPuzzlesLibrary_Tests.m in Sources */,
 				B2D94414187BB6FF002BBCB8 /* GoogleTestStub.m in Sources */,
