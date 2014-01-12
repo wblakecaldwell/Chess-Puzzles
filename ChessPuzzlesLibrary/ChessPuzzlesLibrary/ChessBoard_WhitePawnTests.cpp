@@ -2,6 +2,8 @@
 //  ChessBoard_PawnTests.cpp
 //  ChessPuzzlesLibrary
 //
+//  Tests to assert valid moves for white pawns.
+//
 //  Created by Blake Caldwell on 1/11/14.
 //  Copyright (c) 2014 Blake Caldwell. All rights reserved.
 //
@@ -192,5 +194,13 @@ TEST(ChessBoard_validMoves, pawnsWithNowhereToGo)
     
     initializeEmpty(&board);
     
-    // two pawns on the same file, then make sure neither can move
+    // two pawns on the same file, then make sure the one in back can't move
+    setPiece(&board, 'P', D, R5);
+    setPiece(&board, 'P', D, R6);
+    
+    
+    // no moves expected
+    helperEmptyValidLocations(expectedLocations);
+    ASSERT_EQ(0, validMoves(&board, D, R5, validLocations));
+    ASSERT_STREQ(expectedLocations, validLocations);
 }
