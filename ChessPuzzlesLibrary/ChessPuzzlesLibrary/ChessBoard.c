@@ -116,8 +116,9 @@ int validMoves(struct ChessBoard *board, enum ChessBoardRank rank, enum ChessBoa
     // initialize all positions to 0
     for(i=0; i<=65; i++)
     {
-        validLocations[i] = 0;
+        validLocations[i] = '0';
     }
+    validLocations[64] = 0;
     
     switch(pieceFrom)
     {
@@ -126,14 +127,14 @@ int validMoves(struct ChessBoard *board, enum ChessBoardRank rank, enum ChessBoa
             if(' ' == pieceAt(board, rank+1, file))
             {
                 validMoveCount++;
-                validLocations[pieceIndexAt(rank+1, file)] = 1;
+                validLocations[pieceIndexAt(rank+1, file)] = '1';
             }
             
             // * pawn can move two spaces foward (up) if on rank 2 and nobody's there
             if(R2 == rank && ' ' == pieceAt(board, rank+2, file))
             {
                 validMoveCount++;
-                validLocations[pieceIndexAt(4, file)] = 1;
+                validLocations[pieceIndexAt(4, file)] = '1';
             }
             
             // * pawn can move forward (up) diagonal if an opponent is there
@@ -144,7 +145,7 @@ int validMoves(struct ChessBoard *board, enum ChessBoardRank rank, enum ChessBoa
             {
                 // we can take this piece!
                 validMoveCount++;
-                validLocations[pieceIndexAt(rank+1, file-1)] = 1;
+                validLocations[pieceIndexAt(rank+1, file-1)] = '1';
             }
             
             // check attack right
@@ -152,7 +153,7 @@ int validMoves(struct ChessBoard *board, enum ChessBoardRank rank, enum ChessBoa
             if(BLACK == colorOf(pieceTo))
             {
                 validMoveCount++;
-                validLocations[pieceIndexAt(rank+1, file+1)] = 1;
+                validLocations[pieceIndexAt(rank+1, file+1)] = '1';
             }
             
             break;
@@ -162,14 +163,14 @@ int validMoves(struct ChessBoard *board, enum ChessBoardRank rank, enum ChessBoa
             if(' ' == pieceAt(board, rank-1, file))
             {
                 validMoveCount++;
-                validLocations[pieceIndexAt(rank-1, file)] = 1;
+                validLocations[pieceIndexAt(rank-1, file)] = '1';
             }
             
             // * pawn can move two spaces foward (down) if on rank 7
             if(R7 == rank && ' ' == pieceAt(board, rank-2, file))
             {
                 validMoveCount++;
-                validLocations[pieceIndexAt(rank-2, file)] = 1;
+                validLocations[pieceIndexAt(rank-2, file)] = '1';
             }
             
             // * pawn can move foward (down) diagonal if an opponent is there
@@ -180,7 +181,7 @@ int validMoves(struct ChessBoard *board, enum ChessBoardRank rank, enum ChessBoa
             {
                 // we can take this piece!
                 validMoveCount++;
-                validLocations[pieceIndexAt(rank-1, file-1)] = 1;
+                validLocations[pieceIndexAt(rank-1, file-1)] = '1';
             }
             
             // check attack right
@@ -188,7 +189,7 @@ int validMoves(struct ChessBoard *board, enum ChessBoardRank rank, enum ChessBoa
             if(WHITE == colorOf(pieceTo))
             {
                 validMoveCount++;
-                validLocations[pieceIndexAt(rank-1, file+1)] = 1;
+                validLocations[pieceIndexAt(rank-1, file+1)] = '1';
             }
             break;
         

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B20066D41881F3EB000EFF45 /* ChessBoard_PawnTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B20066D21881F3EB000EFF45 /* ChessBoard_PawnTests.cpp */; };
+		B20066D51881F3EB000EFF45 /* ChessBoard_PawnTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B20066D21881F3EB000EFF45 /* ChessBoard_PawnTests.cpp */; };
+		B20066DB1881F49C000EFF45 /* ChessBoardTestHelpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B20066D71881F468000EFF45 /* ChessBoardTestHelpers.cpp */; };
+		B20066DC1881F49D000EFF45 /* ChessBoardTestHelpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B20066D71881F468000EFF45 /* ChessBoardTestHelpers.cpp */; };
 		B2D943C7187BAF0B002BBCB8 /* ChessBoard.c in Sources */ = {isa = PBXBuildFile; fileRef = B2FBB990187A5F7100382BAC /* ChessBoard.c */; };
 		B2D943C8187BAF24002BBCB8 /* ChessBoard.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FBB992187A5F7A00382BAC /* ChessBoard.h */; };
 		B2D943D8187BB106002BBCB8 /* gtest-all.cc in Sources */ = {isa = PBXBuildFile; fileRef = B2D943D7187BB106002BBCB8 /* gtest-all.cc */; };
@@ -69,6 +73,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B20066D21881F3EB000EFF45 /* ChessBoard_PawnTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChessBoard_PawnTests.cpp; sourceTree = "<group>"; };
+		B20066D71881F468000EFF45 /* ChessBoardTestHelpers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChessBoardTestHelpers.cpp; sourceTree = "<group>"; };
+		B20066D81881F468000EFF45 /* ChessBoardTestHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChessBoardTestHelpers.h; sourceTree = "<group>"; };
 		B2D942E7187A67D7002BBCB8 /* board.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = board.jpg; sourceTree = SOURCE_ROOT; };
 		B2D9433F187A6EE1002BBCB8 /* ChessBoardTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChessBoardTest.cpp; sourceTree = "<group>"; };
 		B2D943C3187BAEE9002BBCB8 /* libChessPuzzlesLibrary.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libChessPuzzlesLibrary.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +134,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B20066D61881F416000EFF45 /* TestHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				B20066D81881F468000EFF45 /* ChessBoardTestHelpers.h */,
+				B20066D71881F468000EFF45 /* ChessBoardTestHelpers.cpp */,
+			);
+			name = TestHelpers;
+			sourceTree = "<group>";
+		};
+		B20066DD1881F5A2000EFF45 /* ChessBoardTests */ = {
+			isa = PBXGroup;
+			children = (
+				B2D9433F187A6EE1002BBCB8 /* ChessBoardTest.cpp */,
+				B20066D21881F3EB000EFF45 /* ChessBoard_PawnTests.cpp */,
+			);
+			name = ChessBoardTests;
+			sourceTree = "<group>";
+		};
 		B2D943D9187BB2B9002BBCB8 /* Google Test */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,10 +234,11 @@
 		B2FBB986187A5CD100382BAC /* ChessPuzzlesLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				B20066D61881F416000EFF45 /* TestHelpers */,
+				B20066DD1881F5A2000EFF45 /* ChessBoardTests */,
 				B2D942E7187A67D7002BBCB8 /* board.jpg */,
 				B2FBB992187A5F7A00382BAC /* ChessBoard.h */,
 				B2FBB990187A5F7100382BAC /* ChessBoard.c */,
-				B2D9433F187A6EE1002BBCB8 /* ChessBoardTest.cpp */,
 			);
 			path = ChessPuzzlesLibrary;
 			sourceTree = "<group>";
@@ -378,6 +404,8 @@
 			files = (
 				B2D9441D187BBEFC002BBCB8 /* ChessBoardTest.cpp in Sources */,
 				B2D943F3187BB355002BBCB8 /* main.cpp in Sources */,
+				B20066D41881F3EB000EFF45 /* ChessBoard_PawnTests.cpp in Sources */,
+				B20066DC1881F49D000EFF45 /* ChessBoardTestHelpers.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +417,8 @@
 				B2D94407187BB3B5002BBCB8 /* ChessPuzzlesLibrary_Tests.m in Sources */,
 				B2D94414187BB6FF002BBCB8 /* GoogleTestStub.m in Sources */,
 				B2D94416187BB76F002BBCB8 /* ChessBoardTest.cpp in Sources */,
+				B20066D51881F3EB000EFF45 /* ChessBoard_PawnTests.cpp in Sources */,
+				B20066DB1881F49C000EFF45 /* ChessBoardTestHelpers.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

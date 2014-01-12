@@ -89,7 +89,7 @@ int movePiece(struct ChessBoard *board, enum ChessBoardRank rankFrom, enum Chess
 
 /*
  * Figure out all of the valid squares for the piece at the input position, storing them in |validLocations| 
- * as either 0 (no) or 1 (yes).
+ * as either '0' (no) or '1' (yes).
  */
 int validMoves(struct ChessBoard *board, enum ChessBoardRank rank, enum ChessBoardFile file, char validLocations[65]);
 
