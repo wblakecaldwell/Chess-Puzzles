@@ -78,7 +78,19 @@ int initializeEmpty(struct ChessBoard *board);
 
 /*
  * Initialize the input board with pieces represented as a string from A8->H8 A7-H7, etc.
- * This will be most helpful for defining a board for a test case. pieces will be modified.
+ * This will be most helpful for defining a board for test case.
+ *
+ *  Example:
+ *      initializeWithPieces(&board, (const char*[])
+ *          {"rnbqkbnr",
+ *           "pppppppp",
+ *           "        ",
+ *           "        ",
+ *           "        ",
+ *           "        ",
+ *           "PPPPPPPP",
+ *           "RNBQKBNR"});
+ *
  */
 int initializeWithPieces(struct ChessBoard *board, const char *pieces[8]);
 
