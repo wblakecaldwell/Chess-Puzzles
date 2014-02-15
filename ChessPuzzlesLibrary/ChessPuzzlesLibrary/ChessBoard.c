@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <strings.h>
+#include <assert.h>
 #include "ChessBoard.h"
 
 /*
@@ -49,6 +50,29 @@ enum ChessPieceColor colorOf(char pieceValue)
 int initializeForGame(struct ChessBoard *board)
 {
     strcpy(board->pieces, "RNBQKBNRPPPPPPPP                                pppppppprnbqkbnr");
+    return 1;
+}
+
+int initializeWithPieces(struct ChessBoard *board, const char *pieces[8])
+{
+    int boardRow;
+    int piecesRow;
+    char boardStr[65];
+    int i;
+    
+    // board is stored as a string from A1-H1, A2-H2. Input is A8-H8, A7-H7, so flip it
+    for(piecesRow=7, boardRow=0; piecesRow>=0; piecesRow--, boardRow++)
+    {
+        assert(strlen(pieces[piecesRow]) == 8);
+        
+        // copy the chars from pieces to boardStr
+        for(i=0; i<8; i++)
+        {
+            boardStr[boardRow*8 + i] = pieces[piecesRow][i];
+        }
+    }
+    boardStr[64] = '\0';
+    strcpy(board->pieces, boardStr);
     return 1;
 }
 

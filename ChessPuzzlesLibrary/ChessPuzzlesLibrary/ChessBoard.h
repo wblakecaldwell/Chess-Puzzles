@@ -77,6 +77,12 @@ int initializeForGame(struct ChessBoard *board);
 int initializeEmpty(struct ChessBoard *board);
 
 /*
+ * Initialize the input board with pieces represented as a string from A8->H8 A7-H7, etc.
+ * This will be most helpful for defining a board for a test case. pieces will be modified.
+ */
+int initializeWithPieces(struct ChessBoard *board, const char *pieces[8]);
+
+/*
  * Get the piece at the input rank and file, where rank is uppercased A-H, file is 1-8.
  * Return 0 on failure.
  */

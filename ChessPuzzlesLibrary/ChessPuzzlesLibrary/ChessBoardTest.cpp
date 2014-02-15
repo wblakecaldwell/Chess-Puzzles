@@ -19,8 +19,31 @@ extern "C" {
 TEST(ChessBoard_initializeForGame, boardPiecesString)
 {
     struct ChessBoard board;
-    initializeForGame(&board);
+    int ret;
     
+    ret = initializeForGame(&board);
+    
+    ASSERT_EQ(1, ret);
+    ASSERT_STREQ("RNBQKBNRPPPPPPPP                                pppppppprnbqkbnr", board.pieces) << "Chess board pieces not stored as expected";
+}
+
+// test initializeWithPieces
+TEST(ChessBoard_initializeWithPieces, success)
+{
+    struct ChessBoard board;
+    int ret;
+    
+    ret = initializeWithPieces(&board, (const char*[])
+            {"rnbqkbnr",
+             "pppppppp",
+             "        ",
+             "        ",
+             "        ",
+             "        ",
+             "PPPPPPPP",
+             "RNBQKBNR"});
+    
+    ASSERT_EQ(1, ret);
     ASSERT_STREQ("RNBQKBNRPPPPPPPP                                pppppppprnbqkbnr", board.pieces) << "Chess board pieces not stored as expected";
 }
 
