@@ -179,20 +179,26 @@ int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoa
             // * pawn can move forward (up) diagonal if an opponent is there
             
             // check attack left
-            pieceTo = pieceAt(board, file-1, rank+1);
-            if(BLACK == colorOf(pieceTo))
+            if(file > A)
             {
-                // we can take this piece!
-                validMoveCount++;
-                validLocations[pieceIndexAt(file-1, rank+1)] = '1';
+                pieceTo = pieceAt(board, file-1, rank+1);
+                if(BLACK == colorOf(pieceTo))
+                {
+                    // we can take this piece!
+                    validMoveCount++;
+                    validLocations[pieceIndexAt(file-1, rank+1)] = '1';
+                }
             }
             
             // check attack right
-            pieceTo = pieceAt(board, file+1, rank+1);
-            if(BLACK == colorOf(pieceTo))
+            if(file < H)
             {
-                validMoveCount++;
-                validLocations[pieceIndexAt(file+1, rank+1)] = '1';
+                pieceTo = pieceAt(board, file+1, rank+1);
+                if(BLACK == colorOf(pieceTo))
+                {
+                    validMoveCount++;
+                    validLocations[pieceIndexAt(file+1, rank+1)] = '1';
+                }
             }
             
             break;
@@ -215,20 +221,26 @@ int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoa
             // * pawn can move foward (down) diagonal if an opponent is there
             
             // check attack left
-            pieceTo = pieceAt(board, file-1, rank-1);
-            if(WHITE == colorOf(pieceTo))
+            if(file > A)
             {
-                // we can take this piece!
-                validMoveCount++;
-                validLocations[pieceIndexAt((enum ChessBoardFile)file-1, (enum ChessBoardRank)rank-1)] = '1';
+                pieceTo = pieceAt(board, file-1, rank-1);
+                if(WHITE == colorOf(pieceTo))
+                {
+                    // we can take this piece!
+                    validMoveCount++;
+                    validLocations[pieceIndexAt((enum ChessBoardFile)file-1, (enum ChessBoardRank)rank-1)] = '1';
+                }
             }
             
             // check attack right
-            pieceTo = pieceAt(board, file+1, rank-1);
-            if(WHITE == colorOf(pieceTo))
+            if(file < H)
             {
-                validMoveCount++;
-                validLocations[pieceIndexAt((enum ChessBoardFile)file+1, (enum ChessBoardRank)rank-1)] = '1';
+                pieceTo = pieceAt(board, file+1, rank-1);
+                if(WHITE == colorOf(pieceTo))
+                {
+                    validMoveCount++;
+                    validLocations[pieceIndexAt((enum ChessBoardFile)file+1, (enum ChessBoardRank)rank-1)] = '1';
+                }
             }
             break;
         

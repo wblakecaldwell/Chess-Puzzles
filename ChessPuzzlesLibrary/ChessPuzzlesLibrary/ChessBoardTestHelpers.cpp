@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include "ChessBoardTestHelpers.h"
 #include <gtest/gtest.h>
+#include <assert.h>
 extern "C" {
     #include "ChessBoard.h"
 }
@@ -58,6 +59,9 @@ int parseTestingBoard(char pieces[][8][8], struct ChessBoard *board, char expect
     int row, col;
     enum ChessBoardRank loopRank;
     enum ChessBoardFile loopFile;
+    int foundTargetPiece;
+    
+    foundTargetPiece = 0;
     
     // testing with a fresh board
     initializeEmpty(board);
@@ -76,6 +80,8 @@ int parseTestingBoard(char pieces[][8][8], struct ChessBoard *board, char expect
             loopRank = (enum ChessBoardRank)(8-row);
             loopFile = (enum ChessBoardFile)(col + 1);
             
+            assert(strlen(pieces[row][col]) == 3);
+            
             // set the piece
             setPiece(board, pieces[row][col][1], loopFile, loopRank);
             
@@ -89,9 +95,12 @@ int parseTestingBoard(char pieces[][8][8], struct ChessBoard *board, char expect
             {
                 *pieceFile = loopFile;
                 *pieceRank = loopRank;
+                foundTargetPiece = 1;
             }
         }
     }
+    
+    assert(foundTargetPiece == 1);
     
     return numberOfExpectedValidLocations;
 }

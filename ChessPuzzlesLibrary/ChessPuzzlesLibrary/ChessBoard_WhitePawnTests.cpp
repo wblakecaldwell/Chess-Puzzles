@@ -271,3 +271,61 @@ TEST(ChessBoard_validMoves, whitePawnWithNowhereToGo)
     // compare the evaluated valid locations
     ASSERT_STREQ(expectedValidLocations, validLocations);
 }
+
+// test validMoves for pawn with attack from A file
+TEST(ChessBoard_validMoves, whitePawnWithAttackOnAFile)
+{
+    enum ChessBoardRank rank;               // rank of the piece we're watching
+    enum ChessBoardFile file;               // file of the piece we're watching
+    struct ChessBoard board;
+    char expectedValidLocations[65];        // what we expect the valid moves to be
+    int numberOfExpectedLocations;          // expected number of valid moves
+    char validLocations[65];                // the valid moves that are determined
+    
+    numberOfExpectedLocations = parseTestingBoard((char [][8][8])
+                                                  {
+                                                      {" r "," n "," b "," q "," k "," b "," n "," r "},
+                                                      {" p ","[p]"," p "," p "," p "," p "," p "," p "},
+                                                      {"(P)","   ","   ","   ","   ","   ","   ","   "},
+                                                      {"   ","   ","   ","   ","   ","   ","   ","   "},
+                                                      {"   ","   ","   ","   ","   ","   ","   ","   "},
+                                                      {"   ","   ","   ","   ","   ","   ","   ","   "},
+                                                      {"   "," P "," P "," P "," P "," P "," P "," P "},
+                                                      {" R "," N "," B "," Q "," K "," B "," N "," R "}
+                                                  }, &board, expectedValidLocations, &file, &rank);
+    
+    // perform SUT and check that it returned the proper number of valid locations
+    ASSERT_EQ(numberOfExpectedLocations, validMoves(&board, file, rank, validLocations));
+    
+    // compare the evaluated valid locations
+    ASSERT_STREQ(expectedValidLocations, validLocations);
+}
+
+// test validMoves for pawn with attack from H file
+TEST(ChessBoard_validMoves, whitePawnWithAttackOnHFile)
+{
+    enum ChessBoardRank rank;               // rank of the piece we're watching
+    enum ChessBoardFile file;               // file of the piece we're watching
+    struct ChessBoard board;
+    char expectedValidLocations[65];        // what we expect the valid moves to be
+    int numberOfExpectedLocations;          // expected number of valid moves
+    char validLocations[65];                // the valid moves that are determined
+    
+    numberOfExpectedLocations = parseTestingBoard((char [][8][8])
+                                                  {
+                                                      {" r "," n "," b "," q "," k "," b "," n "," r "},
+                                                      {" p "," p "," p "," p "," p "," p ","[p]"," p "},
+                                                      {"   ","   ","   ","   ","   ","   ","   ","(P)"},
+                                                      {"   ","   ","   ","   ","   ","   ","   ","   "},
+                                                      {"   ","   ","   ","   ","   ","   ","   ","   "},
+                                                      {"   ","   ","   ","   ","   ","   ","   ","   "},
+                                                      {" P "," P "," P "," P "," P "," P "," P "," P "},
+                                                      {" R "," N "," B "," Q "," K "," B "," N "," R "}
+                                                  }, &board, expectedValidLocations, &file, &rank);
+    
+    // perform SUT and check that it returned the proper number of valid locations
+    ASSERT_EQ(numberOfExpectedLocations, validMoves(&board, file, rank, validLocations));
+    
+    // compare the evaluated valid locations
+    ASSERT_STREQ(expectedValidLocations, validLocations);
+}
