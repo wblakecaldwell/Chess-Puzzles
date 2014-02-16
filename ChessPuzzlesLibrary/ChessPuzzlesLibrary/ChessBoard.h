@@ -81,18 +81,23 @@ int initializeEmpty(struct ChessBoard *board);
  * This will be most helpful for defining a board for test case.
  *
  *  Example:
- *      initializeWithPieces(&board, (const char*[])
- *          {"rnbqkbnr",
- *           "pppppppp",
- *           "        ",
- *           "        ",
- *           "        ",
- *           "        ",
- *           "PPPPPPPP",
- *           "RNBQKBNR"});
+        initializeWithPieces(&board, (const char*[])
+            {"rnbqkbnr",
+             "pppppppp",
+             "        ",
+             "        ",
+             "        ",
+             "        ",
+             "PPPPPPPP",
+             "RNBQKBNR"});
  *
  */
 int initializeWithPieces(struct ChessBoard *board, const char *pieces[8]);
+
+/*
+ * Convert the board array (A8->H8, A7->H7...) to a board string (A1->A8, B1->B8...).
+ */
+int boardArrayToBoardString(const char *pieces[8], char boardStr[65]);
 
 /*
  * Get the piece at the input rank and file, where rank is uppercased A-H, file is 1-8.

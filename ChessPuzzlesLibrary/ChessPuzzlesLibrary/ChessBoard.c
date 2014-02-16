@@ -55,9 +55,18 @@ int initializeForGame(struct ChessBoard *board)
 
 int initializeWithPieces(struct ChessBoard *board, const char *pieces[8])
 {
+    char boardStr[65];
+    
+    boardArrayToBoardString(pieces, boardStr);
+    
+    strcpy(board->pieces, boardStr);
+    return 1;
+}
+
+int boardArrayToBoardString(const char *pieces[8], char boardStr[65])
+{
     int boardRow;
     int piecesRow;
-    char boardStr[65];
     int i;
     
     // board is stored as a string from A1-H1, A2-H2. Input is A8-H8, A7-H7, so flip it
@@ -72,7 +81,6 @@ int initializeWithPieces(struct ChessBoard *board, const char *pieces[8])
         }
     }
     boardStr[64] = '\0';
-    strcpy(board->pieces, boardStr);
     return 1;
 }
 

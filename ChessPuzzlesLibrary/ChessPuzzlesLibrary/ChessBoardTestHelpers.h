@@ -31,4 +31,27 @@ int helperAddValidLocation(char validLocations[65], enum ChessBoardFile file, en
  */
 int helperSetValidLocations(char validLocations[65], const char *locations[]);
 
+/*
+ * Parse the input testing board into a ChessBoard struct and array of expected valid locations.
+ * The testing board is 8 rows of 8 strings. Rows are laid out as a board looks, visually, with white
+ * on bottom. Each cell is a string of length 3. The middle position has the piece, and if we want 
+ * to mark a cell as valid for the selected piece, then we surround it with square brackets. The position
+ * we are testing is surrounded in parentheses - its location will be returned in pieceFile/pieceRank.
+ *
+ * Example:
+ {
+    {" r "," n "," b "," q "," k "," b "," n "," r "},
+    {"[p]"," p "," p ","[p]"," p "," p ","[p]"," p "},
+    {"   ","[ ]","   ","[ ]","   ","[ ]","   ","   "},
+    {"   ","   ","[ ]","[ ]","[ ]","   ","   ","   "},
+    {"[ ]","[ ]","[ ]","(Q)","[ ]","[ ]","[ ]","[ ]"},
+    {"   ","   ","[ ]","[ ]","[ ]","   ","   ","   "},
+    {" P "," P "," P "," P "," P "," P "," P "," P "},
+    {" R "," N "," B ","   "," K "," B "," N "," R "}
+ }
+ *
+ * returns the number of expected valid locations.
+ */
+int parseTestingBoard(char pieces[][8][8], struct ChessBoard *board, char expectedValidLocations[65], enum ChessBoardFile *pieceFile, enum ChessBoardRank *pieceRank);
+
 #endif /* defined(__ChessPuzzlesLibrary__ChessBoardTestHelpers__) */

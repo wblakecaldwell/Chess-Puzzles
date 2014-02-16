@@ -42,10 +42,24 @@ TEST(ChessBoard_initializeWithPieces, success)
              "        ",
              "PPPPPPPP",
              "RNBQKBNR"});
-    
+
     ASSERT_EQ(1, ret);
     ASSERT_STREQ("RNBQKBNRPPPPPPPP                                pppppppprnbqkbnr", board.pieces) << "Chess board pieces not stored as expected";
 }
+
+// test boardArrayToBoardString
+//TEST(ChessBoard_boardArrayToBoardString, success)
+//{
+//    int ret;
+//    char boardStr[65];
+//    char *boardArray[8];
+//    
+//    ret = boardArrayToBoardString(boardArray, boardStr);
+//    
+//    ASSERT_EQ(1, ret);
+//    ASSERT_STREQ("RNBQKBNRPPPPPPPP                                pppppppprnbqkbnr", boardStr) << "Chess board pieces not stored as expected";
+//
+//}
 
 // Test pieceAt for every piece in an initialized board
 TEST(ChessBoard_pieceAt, goodInput)
