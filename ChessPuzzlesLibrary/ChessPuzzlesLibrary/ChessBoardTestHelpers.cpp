@@ -93,6 +93,10 @@ int parseTestingBoard(char pieces[][8][8], struct ChessBoard *board, char expect
             }
             else if(pieces[row][col][0] == '(' && pieces[row][col][2] == ')')
             {
+                if(foundTargetPiece)
+                {
+                    assert(0);
+                }
                 *pieceFile = loopFile;
                 *pieceRank = loopRank;
                 foundTargetPiece = 1;

@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <strings.h>
 #include <assert.h>
+#include <stdlib.h>
 #include "ChessBoard.h"
 
 /*
@@ -139,7 +140,7 @@ int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoa
     enum ChessPieceColor pieceColor;
     char pieceFrom;
     char pieceTo;
-    int i;
+    int i, j;
     int validMoveCount;
     enum ChessPieceColor thisPieceColor;
     
@@ -368,11 +369,39 @@ int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoa
             break;
         
         case 'N':   // white knight
-            // TODO
-            break;
-        
         case 'n':   // black knight
-            // TODO
+            if('N' == pieceFrom)
+            {
+                thisPieceColor = WHITE;
+            }
+            else
+            {
+                thisPieceColor = BLACK;
+            }
+            
+            for(i = -2; i <= 2; i++)    // file
+            {
+                for(j = -2; j <=2; j++) // rank
+                {
+                    if(abs(i) + abs(j) == 3
+                       && (int)file + i >= 1
+                       && file + i <= 8
+                       && (int)rank + j >= 1
+                       && rank + j <= 8)
+                    {
+                        // target square is on the board
+                        pieceTo = pieceAt(board, file + i, rank + j);
+                        pieceColor = colorOf(pieceTo);
+                        
+                        if(NO_PIECE == pieceColor || pieceColor != thisPieceColor)
+                        {
+                            // empty square or attack
+                            validMoveCount++;
+                            validLocations[pieceIndexAt((enum ChessBoardFile)(file+i), (enum ChessBoardRank)(rank+j))] = '1';
+                        }
+                    }
+                }
+            }
             break;
             
         case 'B':   // white bishop
