@@ -140,7 +140,7 @@ int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoa
     enum ChessPieceColor pieceColor;
     char pieceFrom;
     char pieceTo;
-    int i, j;
+    int i, j, loopFile, loopRank;
     int validMoveCount;
     enum ChessPieceColor thisPieceColor;
     
@@ -153,6 +153,7 @@ int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoa
         // there's no piece here
         return 0;
     }
+    thisPieceColor = pieceFrom > 'a' ? BLACK : WHITE;
     
     // initialize all positions to 0
     for(i=0; i<=65; i++)
@@ -248,14 +249,7 @@ int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoa
         
         case 'R':   // white rook
         case 'r':   // black rook
-            if('R' == pieceFrom)
-            {
-                thisPieceColor = WHITE;
-            }
-            else
-            {
-                thisPieceColor = BLACK;
-            }
+            // TODO: all 4 directions should be able to be combined with double-looping like with bishops
             
             // check how far we can move left
             for(i = file-1; i >= 1; i--)
@@ -370,34 +364,31 @@ int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoa
         
         case 'N':   // white knight
         case 'n':   // black knight
-            if('N' == pieceFrom)
-            {
-                thisPieceColor = WHITE;
-            }
-            else
-            {
-                thisPieceColor = BLACK;
-            }
             
             for(i = -2; i <= 2; i++)    // file
             {
                 for(j = -2; j <=2; j++) // rank
                 {
-                    if(abs(i) + abs(j) == 3
-                       && (int)file + i >= 1
-                       && file + i <= 8
-                       && (int)rank + j >= 1
-                       && rank + j <= 8)
+                    if(abs(i) + abs(j) == 3)
                     {
-                        // target square is on the board
-                        pieceTo = pieceAt(board, file + i, rank + j);
-                        pieceColor = colorOf(pieceTo);
+                        loopFile = (int)file + i;
+                        loopRank = (int)rank + j;
                         
-                        if(NO_PIECE == pieceColor || pieceColor != thisPieceColor)
+                        if(loopFile >= 1
+                           && loopFile <= 8
+                           && loopRank >= 1
+                           && loopRank <= 8)
                         {
-                            // empty square or attack
-                            validMoveCount++;
-                            validLocations[pieceIndexAt((enum ChessBoardFile)(file+i), (enum ChessBoardRank)(rank+j))] = '1';
+                            // target square is on the board
+                            pieceTo = pieceAt(board, loopFile, loopRank);
+                            pieceColor = colorOf(pieceTo);
+                            
+                            if(NO_PIECE == pieceColor || pieceColor != thisPieceColor)
+                            {
+                                // empty square or attack
+                                validMoveCount++;
+                                validLocations[pieceIndexAt((enum ChessBoardFile)(loopFile), (enum ChessBoardRank)(loopRank))] = '1';
+                            }
                         }
                     }
                 }
@@ -405,11 +396,42 @@ int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoa
             break;
             
         case 'B':   // white bishop
-            // TODO
-            break;
-            
         case 'b':   // black bishop
-            // TODO
+            for(i=-1; i<=1; i+=2)       // file
+            {
+                for(j=-1; j<=1; j+=2)   // rank
+                {
+                    // this represents a diagonal path - need to follow it through
+                    
+                    for(loopFile = (int)file + i, loopRank = (int)rank + j;
+                        loopFile >=1 && loopFile <= 8 && loopRank >= 1 && loopRank <=8;
+                        loopFile += i, loopRank += j)
+                    {
+                        // target square is on the board
+                        pieceTo = pieceAt(board, loopFile, loopRank);
+                        pieceColor = colorOf(pieceTo);
+                        
+                        if(NO_PIECE == pieceColor)
+                        {
+                            // empty square
+                            validMoveCount++;
+                            validLocations[pieceIndexAt((enum ChessBoardFile)(loopFile), (enum ChessBoardRank)(loopRank))] = '1';
+                        }
+                        else if(pieceColor != thisPieceColor)
+                        {
+                            // hit a square with an opponent's piece - take, and stop following this diagonal
+                            validMoveCount++;
+                            validLocations[pieceIndexAt((enum ChessBoardFile)(loopFile), (enum ChessBoardRank)(loopRank))] = '1';
+                            break;
+                        }
+                        else
+                        {
+                            // hit a square with our piece - stop following this diagonal
+                            break;
+                        }
+                    }
+                }
+            }
             break;
             
         case 'Q':   // white queen
