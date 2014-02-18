@@ -140,21 +140,16 @@ int setPiece(struct ChessBoard *board, char piece, enum ChessBoardFile file, enu
  * Populate validLocations with all of the valid diagonal moves. Assume it's already been initialized. 
  * Return the number of valid moves found.
  */
-int validDiagonalMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoardRank rank, char validLocations[65])
+int validDiagonalMoves(struct ChessBoard *board,
+                       enum ChessBoardFile file,
+                       enum ChessBoardRank rank,
+                       enum ChessPieceColor thisPieceColor,
+                       char validLocations[65])
 {
     int i, j, loopFile, loopRank;
-    char pieceTo, pieceFrom;
+    char pieceTo;
     int validMoveCount = 0;
-    enum ChessPieceColor pieceColor, thisPieceColor;
-    
-    // make sure there's a piece to move
-    pieceFrom = pieceAt(board, file, rank);
-    if(' ' == pieceFrom || 0 == pieceFrom)
-    {
-        // there's no piece here
-        return 0;
-    }
-    thisPieceColor = pieceFrom > 'a' ? BLACK : WHITE;
+    enum ChessPieceColor pieceColor;
     
     for(i=-1; i<=1; i+=2)       // file
     {
@@ -198,21 +193,16 @@ int validDiagonalMoves(struct ChessBoard *board, enum ChessBoardFile file, enum 
  * Populate validLocations with all of the valid straight moves. Assume it's already been initialized.
  * Return the number of valid moves found.
  */
-int validStaightMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoardRank rank, char validLocations[65])
+int validStaightMoves(struct ChessBoard *board,
+                      enum ChessBoardFile file,
+                      enum ChessBoardRank rank,
+                      enum ChessPieceColor thisPieceColor,
+                      char validLocations[65])
 {
     int i, j;
-    char pieceTo, pieceFrom;
+    char pieceTo;
     int validMoveCount = 0;
-    enum ChessPieceColor pieceColor, thisPieceColor;
-    
-    // make sure there's a piece to move
-    pieceFrom = pieceAt(board, file, rank);
-    if(' ' == pieceFrom || 0 == pieceFrom)
-    {
-        // there's no piece here
-        return 0;
-    }
-    thisPieceColor = pieceFrom > 'a' ? BLACK : WHITE;
+    enum ChessPieceColor pieceColor;
     
     // handle left/right movement
     for(i=-1; i<=1; i+=2)
@@ -306,7 +296,7 @@ int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoa
     
     switch(pieceFrom)
     {
-        case 'P':   // white pawn
+        case 'P':   // whi2te pawn
             // * pawn can move forward (up) one space if nobody's in front
             if(' ' == pieceAt(board, file, rank+1))
             {
@@ -391,7 +381,7 @@ int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoa
         
         case 'R':   // white rook
         case 'r':   // black rook
-            validMoveCount += validStaightMoves(board, file, rank, validLocations);
+            validMoveCount += validStaightMoves(board, file, rank, thisPieceColor, validLocations);
             break;
         
         case 'N':   // white knight
@@ -429,17 +419,13 @@ int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoa
             
         case 'B':   // white bishop
         case 'b':   // black bishop
-            validMoveCount += validDiagonalMoves(board, file, rank, validLocations);
-            break;
-            
+            validMoveCount += validDiagonalMoves(board, file, rank, thisPieceColor, validLocations);
             break;
             
         case 'Q':   // white queen
-            // TODO
-            break;
-            
         case 'q':   // black queen
-            // TODO
+            validMoveCount += validDiagonalMoves(board, file, rank, thisPieceColor, validLocations);
+            validMoveCount += validStaightMoves(board, file, rank, thisPieceColor, validLocations);
             break;
             
         case 'K':   // white king
