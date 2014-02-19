@@ -20,9 +20,6 @@ int pieceIndexAt(enum ChessBoardFile file, enum ChessBoardRank rank)
     return ((rank-1) * 8) + file - 1;
 }
 
-/*
- * (PRIVATE) Return the color of the input piece.
- */
 enum ChessPieceColor colorOf(char pieceValue)
 {
     if('P' == pieceValue ||
@@ -267,7 +264,24 @@ int validStaightMoves(struct ChessBoard *board,
     return validMoveCount;
 }
 
-int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoardRank rank, char validLocations[65])
+int initializeBoardString(char boardStr[65])
+{
+    int i;
+    
+    for(i=0; i<65; i++)
+    {
+        boardStr[i] = '0';
+    }
+    boardStr[64] = 0;
+    return 1;
+}
+
+int validMoves(struct ChessBoard *board,
+               enum ChessBoardFile file,
+               enum ChessBoardRank rank,
+               enum PieceMoveType moveTypeQualifier,
+               char validLocations[65]
+               )
 {
     enum ChessPieceColor pieceColor;
     char pieceFrom;
@@ -288,24 +302,20 @@ int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoa
     thisPieceColor = pieceFrom > 'a' ? BLACK : WHITE;
     
     // initialize all positions to 0
-    for(i=0; i<=65; i++)
-    {
-        validLocations[i] = '0';
-    }
-    validLocations[64] = 0;
+    initializeBoardString(validLocations);
     
     switch(pieceFrom)
     {
-        case 'P':   // whi2te pawn
+        case 'P':   // white pawn
             // * pawn can move forward (up) one space if nobody's in front
-            if(' ' == pieceAt(board, file, rank+1))
+            if((moveTypeQualifier == VALID_MOVE) && ' ' == pieceAt(board, file, rank+1))
             {
                 validMoveCount++;
                 validLocations[pieceIndexAt(file, (enum ChessBoardRank)(rank+1))] = '1';
             }
             
             // * pawn can move two spaces foward (up) if on rank 2 and nobody's there
-            if(R2 == rank && ' ' == pieceAt(board, file, rank+2))
+            if((moveTypeQualifier == VALID_MOVE) && R2 == rank && ' ' == pieceAt(board, file, rank+2))
             {
                 validMoveCount++;
                 validLocations[pieceIndexAt(file, 4)] = '1';
@@ -317,9 +327,12 @@ int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoa
             if(file > A)
             {
                 pieceTo = pieceAt(board, file-1, rank+1);
-                if(BLACK == colorOf(pieceTo))
+                if(moveTypeQualifier == ATTACKING_SQUARE                                // we're just looking for squares we attack
+                   ||                                                                   // or
+                   (moveTypeQualifier == VALID_MOVE && BLACK == colorOf(pieceTo))       // looking for valid moves, and this is one
+                   )
                 {
-                    // we can take this piece!
+                    // we're looking for a valid move and we can take this piece
                     validMoveCount++;
                     validLocations[pieceIndexAt(file-1, rank+1)] = '1';
                 }
@@ -329,7 +342,10 @@ int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoa
             if(file < H)
             {
                 pieceTo = pieceAt(board, file+1, rank+1);
-                if(BLACK == colorOf(pieceTo))
+                if(moveTypeQualifier == ATTACKING_SQUARE                                // we're just looking for squares we attack
+                   ||                                                                   // or
+                   (moveTypeQualifier == VALID_MOVE && BLACK == colorOf(pieceTo))       // looking for valid moves, and this is one
+                   )
                 {
                     validMoveCount++;
                     validLocations[pieceIndexAt(file+1, rank+1)] = '1';
@@ -340,14 +356,14 @@ int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoa
         
         case 'p':   // black pawn
             // * pawn can move forward (down) one space if nobody's in front
-            if(' ' == pieceAt(board, (enum ChessBoardFile)file, (enum ChessBoardRank)rank-1))
+            if((moveTypeQualifier == VALID_MOVE) && ' ' == pieceAt(board, file, rank-1))
             {
                 validMoveCount++;
                 validLocations[pieceIndexAt((enum ChessBoardFile)file, rank-1)] = '1';
             }
             
             // * pawn can move two spaces foward (down) if on rank 7
-            if(R7 == rank && ' ' == pieceAt(board, file, rank-2))
+            if((moveTypeQualifier == VALID_MOVE) && R7 == rank && ' ' == pieceAt(board, file, rank-2))
             {
                 validMoveCount++;
                 validLocations[pieceIndexAt(file, rank-2)] = '1';
@@ -359,7 +375,10 @@ int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoa
             if(file > A)
             {
                 pieceTo = pieceAt(board, file-1, rank-1);
-                if(WHITE == colorOf(pieceTo))
+                if(moveTypeQualifier == ATTACKING_SQUARE                                // we're just looking for squares we attack
+                   ||                                                                   // or
+                   (moveTypeQualifier == VALID_MOVE && WHITE == colorOf(pieceTo))       // looking for valid moves, and this is one
+                   )
                 {
                     // we can take this piece!
                     validMoveCount++;
@@ -371,7 +390,10 @@ int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoa
             if(file < H)
             {
                 pieceTo = pieceAt(board, file+1, rank-1);
-                if(WHITE == colorOf(pieceTo))
+                if(moveTypeQualifier == ATTACKING_SQUARE                                // we're just looking for squares we attack
+                   ||                                                                   // or
+                   (moveTypeQualifier == VALID_MOVE && WHITE == colorOf(pieceTo))       // looking for valid moves, and this is one
+                   )
                 {
                     validMoveCount++;
                     validLocations[pieceIndexAt((enum ChessBoardFile)file+1, (enum ChessBoardRank)rank-1)] = '1';

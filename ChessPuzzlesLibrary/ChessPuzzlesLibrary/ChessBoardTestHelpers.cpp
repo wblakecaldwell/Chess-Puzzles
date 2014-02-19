@@ -53,7 +53,12 @@ int helperSetValidLocations(char validLocations[65], const char *locations[])
     return 1;
 }
 
-int parseTestingBoard(char pieces[][8][8], struct ChessBoard *board, char expectedValidLocations[65], enum ChessBoardFile *pieceFile, enum ChessBoardRank *pieceRank)
+int parseTestingBoard(char pieces[][8][8],
+                      struct ChessBoard *board,
+                      char expectedValidLocations[65],
+                      enum ChessBoardFile *pieceFile,
+                      enum ChessBoardRank *pieceRank,
+                      bool ensureTargetPiece)
 {
     int numberOfExpectedValidLocations;
     int row, col;
@@ -104,7 +109,10 @@ int parseTestingBoard(char pieces[][8][8], struct ChessBoard *board, char expect
         }
     }
     
-    assert(foundTargetPiece == 1);
+    if(ensureTargetPiece)
+    {
+        assert(foundTargetPiece == 1);
+    }
     
     return numberOfExpectedValidLocations;
 }

@@ -25,6 +25,10 @@
 		B2206BCE18B317200088C141 /* ChessBoard_WhiteQueenTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2206BCB18B3171F0088C141 /* ChessBoard_WhiteQueenTests.cpp */; };
 		B2206BD118B31DCA0088C141 /* ChessBoard_BlackQueenTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2206BCF18B31DCA0088C141 /* ChessBoard_BlackQueenTests.cpp */; };
 		B2206BD218B31DCA0088C141 /* ChessBoard_BlackQueenTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2206BCF18B31DCA0088C141 /* ChessBoard_BlackQueenTests.cpp */; };
+		B2206BD618B460480088C141 /* ForksGame.c in Sources */ = {isa = PBXBuildFile; fileRef = B2206BD518B460480088C141 /* ForksGame.c */; };
+		B2206BDA18B460620088C141 /* ForksGame.h in Headers */ = {isa = PBXBuildFile; fileRef = B2206BD918B460620088C141 /* ForksGame.h */; };
+		B2206BDE18B468110088C141 /* ForksGameTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2206BDC18B468110088C141 /* ForksGameTest.cpp */; };
+		B2206BDF18B468110088C141 /* ForksGameTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2206BDC18B468110088C141 /* ForksGameTest.cpp */; };
 		B2D943C7187BAF0B002BBCB8 /* ChessBoard.c in Sources */ = {isa = PBXBuildFile; fileRef = B2FBB990187A5F7100382BAC /* ChessBoard.c */; };
 		B2D943C8187BAF24002BBCB8 /* ChessBoard.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FBB992187A5F7A00382BAC /* ChessBoard.h */; };
 		B2D943D8187BB106002BBCB8 /* gtest-all.cc in Sources */ = {isa = PBXBuildFile; fileRef = B2D943D7187BB106002BBCB8 /* gtest-all.cc */; };
@@ -101,6 +105,9 @@
 		B2206BC718B1B8B80088C141 /* ChessBoard_BlackBishopTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChessBoard_BlackBishopTests.cpp; sourceTree = "<group>"; };
 		B2206BCB18B3171F0088C141 /* ChessBoard_WhiteQueenTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChessBoard_WhiteQueenTests.cpp; sourceTree = "<group>"; };
 		B2206BCF18B31DCA0088C141 /* ChessBoard_BlackQueenTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChessBoard_BlackQueenTests.cpp; sourceTree = "<group>"; };
+		B2206BD518B460480088C141 /* ForksGame.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ForksGame.c; sourceTree = "<group>"; };
+		B2206BD918B460620088C141 /* ForksGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForksGame.h; sourceTree = "<group>"; };
+		B2206BDC18B468110088C141 /* ForksGameTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ForksGameTest.cpp; sourceTree = "<group>"; };
 		B2D942E7187A67D7002BBCB8 /* board.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = board.jpg; sourceTree = SOURCE_ROOT; };
 		B2D9433F187A6EE1002BBCB8 /* ChessBoardTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChessBoardTest.cpp; sourceTree = "<group>"; };
 		B2D943C3187BAEE9002BBCB8 /* libChessPuzzlesLibrary.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libChessPuzzlesLibrary.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +195,32 @@
 			name = ChessBoardTests;
 			sourceTree = "<group>";
 		};
+		B2206BD318B460290088C141 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				B2206BD418B460330088C141 /* Forks */,
+			);
+			name = Games;
+			sourceTree = "<group>";
+		};
+		B2206BD418B460330088C141 /* Forks */ = {
+			isa = PBXGroup;
+			children = (
+				B2206BDB18B467F50088C141 /* ForksGameTests */,
+				B2206BD918B460620088C141 /* ForksGame.h */,
+				B2206BD518B460480088C141 /* ForksGame.c */,
+			);
+			name = Forks;
+			sourceTree = "<group>";
+		};
+		B2206BDB18B467F50088C141 /* ForksGameTests */ = {
+			isa = PBXGroup;
+			children = (
+				B2206BDC18B468110088C141 /* ForksGameTest.cpp */,
+			);
+			name = ForksGameTests;
+			sourceTree = "<group>";
+		};
 		B2D943D9187BB2B9002BBCB8 /* Google Test */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +303,7 @@
 		B2FBB986187A5CD100382BAC /* ChessPuzzlesLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				B2206BD318B460290088C141 /* Games */,
 				B20066D61881F416000EFF45 /* TestHelpers */,
 				B20066DD1881F5A2000EFF45 /* ChessBoardTests */,
 				B2D942E7187A67D7002BBCB8 /* board.jpg */,
@@ -286,6 +320,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2206BDA18B460620088C141 /* ForksGame.h in Headers */,
 				B2D943C8187BAF24002BBCB8 /* ChessBoard.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2D943C7187BAF0B002BBCB8 /* ChessBoard.c in Sources */,
+				B2206BD618B460480088C141 /* ForksGame.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2206BC518B1B41C0088C141 /* ChessBoard_WhiteBishopTests.cpp in Sources */,
+				B2206BDE18B468110088C141 /* ForksGameTest.cpp in Sources */,
 				B2D9441D187BBEFC002BBCB8 /* ChessBoardTest.cpp in Sources */,
 				B2D943F3187BB355002BBCB8 /* main.cpp in Sources */,
 				B20066D41881F3EB000EFF45 /* ChessBoard_WhitePawnTests.cpp in Sources */,
@@ -459,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2206BCA18B1B8B80088C141 /* ChessBoard_BlackBishopTests.cpp in Sources */,
+				B2206BDF18B468110088C141 /* ForksGameTest.cpp in Sources */,
 				B2F31FC8188246D9007AAC4D /* ChessBoard_BlackPawnTests.cpp in Sources */,
 				B2D94411187BB6D5002BBCB8 /* GoogleTests.mm in Sources */,
 				B2206BC618B1B41C0088C141 /* ChessBoard_WhiteBishopTests.cpp in Sources */,

@@ -10,6 +10,7 @@
 #define __ChessPuzzlesLibrary__ChessBoardTestHelpers__
 
 #include <iostream>
+#include <stdbool.h>
 
 extern "C" {
     #include "ChessBoard.h"
@@ -52,6 +53,12 @@ int helperSetValidLocations(char validLocations[65], const char *locations[]);
  *
  * returns the number of expected valid locations.
  */
-int parseTestingBoard(char pieces[][8][8], struct ChessBoard *board, char expectedValidLocations[65], enum ChessBoardFile *pieceFile, enum ChessBoardRank *pieceRank);
+int parseTestingBoard(char pieces[][8][8],
+                      struct ChessBoard *board,
+                      char expectedValidLocations[65],
+                      enum ChessBoardFile *pieceFile,
+                      enum ChessBoardRank *pieceRank,
+                      bool ensureTargetPiece            // whether we assert that there's a piece in parens
+                    );
 
 #endif /* defined(__ChessPuzzlesLibrary__ChessBoardTestHelpers__) */

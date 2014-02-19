@@ -35,10 +35,10 @@ TEST(ChessBoard_validMoves, leftBlackRookWithFreshBoard)
                                                       {"   ","   ","   ","   ","   ","   ","   ","   "},
                                                       {" P "," P "," P "," P "," P "," P "," P "," P "},
                                                       {" R "," N "," B "," Q "," K "," B "," N "," R "}
-                                                  }, &board, expectedValidLocations, &file, &rank);
+                                                  }, &board, expectedValidLocations, &file, &rank, true);
     
     // perform SUT and check that it returned the proper number of valid locations
-    ASSERT_EQ(numberOfExpectedLocations, validMoves(&board, file, rank, validLocations));
+    ASSERT_EQ(numberOfExpectedLocations, validMoves(&board, file, rank, VALID_MOVE, validLocations));
     
     // compare the evaluated valid locations
     ASSERT_STREQ(expectedValidLocations, validLocations);
@@ -64,10 +64,10 @@ TEST(ChessBoard_validMoves, rightBlackRookWithFreshBoard)
                                                       {"   ","   ","   ","   ","   ","   ","   ","   "},
                                                       {" P "," P "," P "," P "," P "," P "," P "," P "},
                                                       {" R "," N "," B "," Q "," K "," B "," N "," R "}
-                                                  }, &board, expectedValidLocations, &file, &rank);
+                                                  }, &board, expectedValidLocations, &file, &rank, true);
     
     // perform SUT and check that it returned the proper number of valid locations
-    ASSERT_EQ(numberOfExpectedLocations, validMoves(&board, file, rank, validLocations));
+    ASSERT_EQ(numberOfExpectedLocations, validMoves(&board, file, rank, VALID_MOVE, validLocations));
     
     // compare the evaluated valid locations
     ASSERT_STREQ(expectedValidLocations, validLocations);
@@ -93,10 +93,10 @@ TEST(ChessBoard_validMoves, blackRookInMiddleOfEmptyBoard)
                                                       {"[ ]","[ ]","[ ]","[ ]","(r)","[ ]","[ ]","[ ]"},
                                                       {"   ","   ","   ","   ","[ ]","   ","   ","   "},
                                                       {"   ","   ","   ","   ","[ ]","   ","   ","   "}
-                                                  }, &board, expectedValidLocations, &file, &rank);
+                                                  }, &board, expectedValidLocations, &file, &rank, true);
     
     // perform SUT and check that it returned the proper number of valid locations
-    ASSERT_EQ(numberOfExpectedLocations, validMoves(&board, file, rank, validLocations));
+    ASSERT_EQ(numberOfExpectedLocations, validMoves(&board, file, rank, VALID_MOVE, validLocations));
     
     // compare the evaluated valid locations
     ASSERT_STREQ(expectedValidLocations, validLocations);
@@ -123,10 +123,10 @@ TEST(ChessBoard_validMoves, blackRookLowerLeftCornerOfEmptyBoard)
                                                       {"[ ]","   ","   ","   ","   ","   ","   ","   "},
                                                       {"[ ]","   ","   ","   ","   ","   ","   ","   "},
                                                       {"(r)","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]"}
-                                                  }, &board, expectedValidLocations, &file, &rank);
+                                                  }, &board, expectedValidLocations, &file, &rank, true);
     
     // perform SUT and check that it returned the proper number of valid locations
-    ASSERT_EQ(numberOfExpectedLocations, validMoves(&board, file, rank, validLocations));
+    ASSERT_EQ(numberOfExpectedLocations, validMoves(&board, file, rank, VALID_MOVE, validLocations));
     
     // compare the evaluated valid locations
     ASSERT_STREQ(expectedValidLocations, validLocations);
@@ -152,10 +152,10 @@ TEST(ChessBoard_validMoves, blackRookLowerRightCornerOfEmptyBoard)
                                                       {"   ","   ","   ","   ","   ","   ","   ","[ ]"},
                                                       {"   ","   ","   ","   ","   ","   ","   ","[ ]"},
                                                       {"[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","(r)"}
-                                                  }, &board, expectedValidLocations, &file, &rank);
+                                                  }, &board, expectedValidLocations, &file, &rank, true);
     
     // perform SUT and check that it returned the proper number of valid locations
-    ASSERT_EQ(numberOfExpectedLocations, validMoves(&board, file, rank, validLocations));
+    ASSERT_EQ(numberOfExpectedLocations, validMoves(&board, file, rank, VALID_MOVE, validLocations));
     
     // compare the evaluated valid locations
     ASSERT_STREQ(expectedValidLocations, validLocations);
@@ -181,10 +181,10 @@ TEST(ChessBoard_validMoves, blackRookTopLeftCornerOfEmptyBoard)
                                                       {"[ ]","   ","   ","   ","   ","   ","   ","   "},
                                                       {"[ ]","   ","   ","   ","   ","   ","   ","   "},
                                                       {"[ ]","   ","   ","   ","   ","   ","   ","   "}
-                                                  }, &board, expectedValidLocations, &file, &rank);
+                                                  }, &board, expectedValidLocations, &file, &rank, true);
     
     // perform SUT and check that it returned the proper number of valid locations
-    ASSERT_EQ(numberOfExpectedLocations, validMoves(&board, file, rank, validLocations));
+    ASSERT_EQ(numberOfExpectedLocations, validMoves(&board, file, rank, VALID_MOVE, validLocations));
     
     // compare the evaluated valid locations
     ASSERT_STREQ(expectedValidLocations, validLocations);
@@ -210,10 +210,10 @@ TEST(ChessBoard_validMoves, blackRookTopRightCornerOfEmptyBoard)
                                                       {"   ","   ","   ","   ","   ","   ","   ","[ ]"},
                                                       {"   ","   ","   ","   ","   ","   ","   ","[ ]"},
                                                       {"   ","   ","   ","   ","   ","   ","   ","[ ]"}
-                                                  }, &board, expectedValidLocations, &file, &rank);
+                                                  }, &board, expectedValidLocations, &file, &rank, true);
     
     // perform SUT and check that it returned the proper number of valid locations
-    ASSERT_EQ(numberOfExpectedLocations, validMoves(&board, file, rank, validLocations));
+    ASSERT_EQ(numberOfExpectedLocations, validMoves(&board, file, rank, VALID_MOVE, validLocations));
     
     // compare the evaluated valid locations
     ASSERT_STREQ(expectedValidLocations, validLocations);
@@ -238,10 +238,10 @@ TEST(ChessBoard_validMoves, blackRookInMiddleOfCrowdedBoard)
                                                       {"   ","   ","   ","[ ]","   ","   ","   ","   "},
                                                       {" P "," P "," P ","[P]"," P "," P "," P "," P "},
                                                       {"   "," N "," B "," Q "," K "," B "," N "," R "}
-                                                  }, &board, expectedValidLocations, &file, &rank);
+                                                  }, &board, expectedValidLocations, &file, &rank, true);
     
     // perform SUT and check that it returned the proper number of valid locations
-    ASSERT_EQ(numberOfExpectedLocations, validMoves(&board, file, rank, validLocations));
+    ASSERT_EQ(numberOfExpectedLocations, validMoves(&board, file, rank, VALID_MOVE, validLocations));
     
     // compare the evaluated valid locations
     ASSERT_STREQ(expectedValidLocations, validLocations);

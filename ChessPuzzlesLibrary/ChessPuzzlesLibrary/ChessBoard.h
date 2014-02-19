@@ -50,6 +50,15 @@ enum ChessBoardFile
 };
 
 /*
+ * Represents the different types of piece movements.
+ */
+enum PieceMoveType
+{
+    VALID_MOVE,             // a move that would be valid on the player's turn
+    ATTACKING_SQUARE        // a move that is attacking, but not necessarily a valid move
+};
+
+/*
  *  Representation of the chess board (rank, file): (0,0) = a1, (7,7) = h8. 9 wide so last position can hold NULL.
  */
 struct ChessBoard
@@ -95,7 +104,17 @@ int initializeEmpty(struct ChessBoard *board);
 int initializeWithPieces(struct ChessBoard *board, const char *pieces[8]);
 
 /*
- * Convert the board array (A8->H8, A7->H7...) to a board string (A1->A8, B1->B8...).
+ * Initialize the input board string to all '0's with a null terminator.
+ */
+int initializeBoardString(char boardStr[65]);
+
+/*
+ * Return the color of the input piece.
+ */
+enum ChessPieceColor colorOf(char pieceValue);
+
+/*
+ * Convert the board array (A8->H8, A7->H7...) to a board string (A1->H8, A2->H2...).
  */
 int boardArrayToBoardString(const char *pieces[8], char boardStr[65]);
 
@@ -119,6 +138,11 @@ int movePiece(struct ChessBoard *board, enum ChessBoardFile fileFrom, enum Chess
  * Figure out all of the valid squares for the piece at the input position, storing them in |validLocations| 
  * as either '0' (no) or '1' (yes).
  */
-int validMoves(struct ChessBoard *board, enum ChessBoardFile file, enum ChessBoardRank rank, char validLocations[65]);
+int validMoves(struct ChessBoard *board,
+               enum ChessBoardFile file,
+               enum ChessBoardRank rank,
+               enum PieceMoveType moveTypeQualifier,     // the types of moves to include: empty square and/or attack
+               char validLocations[65]
+            );
 
 #endif
