@@ -1,3 +1,5 @@
+__Current status__: I just set up some basic logic to figure out where pieces are allowed to move, complete with unit test. I'll probably never actually finish this, but will poke at it from time to time.
+
 Chess Puzzles
 =============
 
